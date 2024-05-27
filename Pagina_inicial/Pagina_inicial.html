@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraFirma</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="Pagina_Inicial.css">
+    <link rel="stylesheet" href="Carrosel/Carrosel.css">
+    <link rel="icon" href="/TerraFirma/Pagina_inicial/Imagens/favicon-32x32.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+
+    <script src="Carrosel/Carrosel.js" defer></script>
+
+</head>
+<body>
+    <header class="menu">
+        <section class="sessao-logo-menu">
+            <img src="Imagens/Logo-removebg-preview 1.png" alt="Logo" class="logo-menu">
+            <p>TerraFirma</p>
+        </section>
+        <section class="sessao-botoes-menu">
+            <section class="sessao-Barra_de_pesquisa">
+                <input class="Barra_de_pesquisa" id="Input_pesquisa_ONG" type="text" placeholder="Busque  uma vaga/ONG:">
+                <span class="material-symbols-outlined">Search</span>
+            </section>
+            <a href="">
+                <button class="botao-menu">Sobre Nós</button>
+            </a>
+            <a href="">
+                <button class="botao-menu ">voluntário</button>
+            </a>
+            <a href="">
+                <button class="botao-menu ">Vagas</button>
+            </a>        
+            <a href="">
+                <button class="botao-menu ">Causas</button>
+            </a>
+        </section>
+        <section class="sessao-botao-entrar">
+            <a href="">
+                <button class="botao-menu entrar">Entrar</button>
+            </a>
+        </section>
+    </header>
+
+    <section class="Carrosel">
+        <div class="Conteudo-Carrosel">
+            <input type="radio" id="radio-1">
+            <input type="radio" id="radio-2">
+            <input type="radio" id="radio-3">
+
+            <div class="Caixa-Carrosel Primeiro">
+                <a href="">
+                    <img class="Img-Carrosel" src="Imagens/Img-Carrosel-1.png" alt="Slide 1">
+                </a>
+            </div>
+            <div class="Caixa-Carrosel">
+                <a href="">
+                    <img class="Img-Carrosel" src="Imagens/Img-Carrosel-2.png" alt="Slide 1">
+                </a>
+            </div>
+            <div class="Caixa-Carrosel">
+                <a href="">
+                    <img class="Img-Carrosel" src="Imagens/Img-Carrosel-3.png" alt="Slide 1">
+                </a>
+            </div>
+
+            <div class="Navegacao_Automatica">
+                <div class="auto_btn1"></div>
+                <div class="auto_btn2"></div>
+                <div class="auto_btn3"></div>
+            </div>
+
+            <div class="Navegacao-Manual">
+                <label for="radio-1" class="Manual-btn"></label>
+                <label for="radio-2" class="Manual-btn"></label>
+                <label for="radio-3" class="Manual-btn"></label>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

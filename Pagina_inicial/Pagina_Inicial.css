@@ -1,0 +1,150 @@
+*{
+    /*espaçamento*/
+    margin: 0px;
+    padding: 0px;
+    /*Detalhes*/
+    overflow: hidden;
+}
+body{
+    /*tamanho*/
+    width: 100%;
+    height: 100vh;
+    /*organização de elementos filhos*/
+    display: flex;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.menu {
+    /*Tamanho*/
+    width: 100%;
+    height: 10%;
+    /*Posição*/
+    position: fixed;
+    z-index: 100;
+    /*Organização de elementos filhos*/
+    display: flex;
+    justify-content: space-between;
+    /*Borda*/
+    border: 0px;
+    /*Cor*/
+    background-color: #fff;
+}
+
+.sessao-logo-menu {
+    /*Tamanho*/
+    width: 15%;
+    /*Organização de elementos filhos*/
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /*Fonte*/
+    font-size: 25px;
+}
+
+
+.logo-menu {
+    /*Tamanho*/
+    width: 70px;
+    height: 70px;
+}
+
+.sessao-botoes-menu {
+    /*Tamanho*/
+    width: 60%;
+    /*Organização de elementos filhos*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.botao-menu {
+    /* Tamanho */
+    width: 100%;
+    width: 120px;
+    height: 30px;
+
+    /* Borda */
+    border: 0px;
+    border-radius: 10px;
+
+    /* Cor */
+    background-color: transparent;
+
+    /* Fonte */
+    font-size: 20px;
+
+    /* Detalhes */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-menu:hover{
+    /* Cor */
+    color: #ffffff;
+    background-color: #007BFF;
+}
+
+.sessao-botao-entrar {
+    /* Tamanho */
+    width: 15%;
+    padding-right: 10px;
+
+    /* Organização de elementos filhos */
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.entrar {
+    /* Tamanho */
+    width: 100%;
+    height: 100%;
+    width: 120px;
+    height: 30px;
+
+    /*Organização de elementos filhos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.sessao-Barra_de_pesquisa{
+    /*Tamanho */
+    width: 30%;
+    height: 55%;
+    padding-left: 10px;
+    padding-right: 7px;
+
+    /* Cor */
+    background-color: #4DA3FF;
+
+    /* borda */
+    border-radius: 10px;
+
+    /* Organização de elementos filhos */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Barra_de_pesquisa{
+    /* Borda */
+    border: none;
+    outline: none;
+
+    /* Cor */
+    background-color: #4DA3FF;
+}   
+
+input::placeholder {
+    /* Cor */
+    color: #000000; 
+    font-weight: bolder;
+    font-size: 15px;
+}

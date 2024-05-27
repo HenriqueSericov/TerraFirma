@@ -1,0 +1,96 @@
+.Carrosel{
+    /* Tamanho */
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.Conteudo-Carrosel{
+    /* Tamanho */
+    width: 400%;
+    height: auto;
+
+    /* Organização de elementos filhos */
+    display: flex;
+}
+
+.Conteudo-Carrosel input{
+    display: none;
+}
+
+.Caixa-Carrosel{
+    /* Tamanho */
+    width: 25%;
+    height: auto;
+    position: relative;
+
+    /* Texto */
+    text-align: center;
+
+    /* Detalhes */
+    transition: 1s;
+}
+
+.Caixa-Carrosel img{
+    /* Tamanho */
+    width: 100%;
+}
+
+.Navegacao-Manual, .Navegacao_Automatica{
+    /* Tamanho */
+    width: 100%;
+    margin-top: 29%;
+
+    /* Organização de elementos filhos */
+    display: flex;
+    position: absolute;
+    justify-content: center;
+}
+
+.Navegacao-Manual .Manual-btn, .Navegacao_Automatica div{
+    /* Borda */
+    border: 1px solid #FD7E14;
+    border-radius: 90%;
+
+    /* Tamanho */
+    padding: 10px;
+
+
+    /* Detalhes */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.Navegacao-Manual .Manual-btn:not(:last-child), .Navegacao_Automatica div:not(:last-child){
+    margin-right: 10px;
+}
+
+.Navegacao-Manual .Manual-btn:hover{
+    background-color: #FD7E14;
+}
+
+#radio-1:checked ~ .Navegacao_Automatica .auto_btn1{
+    background-color: #FD7E14;
+}
+
+#radio-2:checked ~ .Navegacao_Automatica .auto_btn2{
+    background-color: #FD7E14;
+}
+
+#radio-3:checked ~ .Navegacao_Automatica .auto_btn3{
+    background-color: #FD7E14;
+}
+
+#radio-1:checked ~ .Primeiro{
+    margin-left: 0%;
+}
+
+#radio-2:checked ~ .Primeiro{
+    margin-left: -25%;
+}
+
+#radio-3:checked ~ .Primeiro{
+    margin-left: -50%;
+}

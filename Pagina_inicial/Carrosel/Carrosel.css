@@ -5,12 +5,13 @@
     height: auto;
     padding: 0 !important;
     overflow: hidden;
+
 }
 
 .Conteudo-Carrosel{
     /* Tamanho */
     width: 400%;
-    height: auto;
+    height: 530px;
 
     /* Organização de elementos filhos */
     display: flex;

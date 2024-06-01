@@ -2,17 +2,14 @@
     /*espaçamento*/
     margin: 0px;
     padding: 0px;
-    /*Detalhes*/
-    overflow: hidden;
 }
 body{
     /*tamanho*/
     width: 100%;
     height: 100vh;
-    /*organização de elementos filhos*/
-    display: flex;
+    /*organização de elementos filhos*/ 
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+    overflow-y: scroll;
 }
 
 .menu {
@@ -147,4 +144,102 @@ input::placeholder {
     color: #000000; 
     font-weight: bolder;
     font-size: 15px;
+}
+
+.Sessao_Quem_Nos_Somos{
+    margin-top: 1%;
+}
+
+.Conteudo_Quem_Nos_Somos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Info_Quem_Nos_Somos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.Titulo_Quem_Nos_Somos{
+    /* Texto */
+    font-size: 44px;
+    font-weight: bold;
+    color: #FFC107;
+}
+
+.Texto_Quem_Nos_Somos{  
+    width: 90%;
+    font-size: 27px;
+}
+
+.Botao_Seja_Voluntario{
+    /* Tamanho */
+    width: 40%;
+    height: 200%;
+
+    border: none;
+    border-radius: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.Botao_Seja_Voluntario:hover{
+    height: 217%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+.Imagem_Quem_Nos_Somos{
+    height: 90%;
+    border-right: 20px solid #28A745;
+    border-bottom: 20px solid #28A745;
+    border-radius: 30px;
+
+}
+
+.Sessao_Objetivos{
+    margin-top: 2%;
+    height: 80%;
+    border-bottom: 2px solid #000000;
+}
+
+.Conteudo_Objetivos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Textos_Objetivo{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Titulo_Objetivos{
+    text-align: center;
+    font-size: 42px;
+    color: #28A745;
+    font-weight: bold;
+}
+
+.Texto_Objetivo{
+    width: 70%;
+    font-size: 30px;
+}
+
+.ODSs{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }

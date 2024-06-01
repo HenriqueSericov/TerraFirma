@@ -6,18 +6,27 @@
     <title>TerraFirma</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <link rel="stylesheet" href="Pagina_Inicial.css">
+
     <link rel="stylesheet" href="Carrosel/Carrosel.css">
+    <script src="Carrosel/Carrosel.js" defer></script>
+
+    <link rel="stylesheet" href="Slider/Slider.css">
+    
     <link rel="icon" href="/TerraFirma/Pagina_inicial/Imagens/favicon-32x32.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 
-    <script src="Carrosel/Carrosel.js" defer></script>
+
+
 
 </head>
 <body>
     <header class="menu">
         <section class="sessao-logo-menu">
-            <img src="Imagens/Logo-removebg-preview 1.png" alt="Logo" class="logo-menu">
+            <a href="">
+                <img src="Imagens/Logo-removebg-preview 1.png" alt="Logo" class="logo-menu">
+            </a>
             <p>TerraFirma</p>
         </section>
         <section class="sessao-botoes-menu">
@@ -25,16 +34,16 @@
                 <input class="Barra_de_pesquisa" id="Input_pesquisa_ONG" type="text" placeholder="Busque  uma vaga/ONG:">
                 <span class="material-symbols-outlined">Search</span>
             </section>
-            <a href="">
+            <a href="#Sessao_Quem_Nos_Somos">
                 <button class="botao-menu">Sobre Nós</button>
             </a>
             <a href="">
                 <button class="botao-menu ">voluntário</button>
             </a>
-            <a href="">
+            <a href="#Sessao_Vagas">
                 <button class="botao-menu ">Vagas</button>
             </a>        
-            <a href="">
+            <a href="#Sessao_Categorias_de_vagas">
                 <button class="botao-menu ">Causas</button>
             </a>
         </section>
@@ -81,7 +90,7 @@
         </div>
     </section>
 
-    <section class="Sessao_Quem_Nos_Somos">
+    <section class="Sessao_Quem_Nos_Somos" id="Sessao_Quem_Nos_Somos">
         <div class="Conteudo_Quem_Nos_Somos">
             <div class="Info_Quem_Nos_Somos">
                 <h1 class="Titulo_Quem_Nos_Somos">Quem nós somos?</h1>
@@ -115,5 +124,127 @@
         </div>
     </section>
 
+    <section class="Sessao_Categorias_de_vagas" id="Sessao_Categorias_de_vagas">
+        <div class="Categorias">
+            <h1 class="Titulo_Categorias">Categorias de vagas</h1>
+            <div class="Tipos_Categoria">
+                <a href="">
+                    <img class="Img_Categoria" src="Imagens/Alimento.png" alt="ODS Alimento">
+                </a>
+                <a href="">
+                    <img class="Img_Categoria" src="Imagens/Limpeza.png" alt="ODS Limpeza">
+                </a>
+                <a href="">
+                    <img class="Img_Categoria" src="Imagens/Educação.png" alt="ODS Educação">
+                </a>
+                <a href="">
+                    <img class="Img_Categoria" src="Imagens/Animais.png" alt="ODS Animais">
+                </a>
+                <a href="">
+                    <img class="Img_Categoria" src="Imagens/Saude.png" alt="ODS Saude">
+                </a>
+                <a href="">
+                    <img class="Img_Categoria" src="Imagens/Recreação.png" alt="ODS Recreação">
+                </a>
+            </div>
+            <a href="">
+                <button class="Botao_Ver_mais">Ver Mais</button>
+            </a>
+        </div>
+    </section>
+
+    <section class="Sessao_Vagas" id="Sessao_Vagas">
+        <div class="Vagas">
+            <h1 class="Titulo_Vagas">Vagas em Destaque</h1>
+            <div class="Cards_Vagas">
+                <div class="Card">
+                    <img class="Imagem_card" src="Imagens/Pintando-Casas.png" alt="">
+                    <div class="Conteudo_Card">
+                        <h1 class="titulo_card">Pintando Casas</h1>
+                        <div class="Detalhes_Card">
+                            <section class="Localizacao-card">
+                                <span>📍</span>
+                                <p class="Cidade_Zona_Card_Acao">São Paulo, ZL</p>
+                            </section>
+                            <p class="Data_Acao">06/09/2024</p>
+                        </div>
+                        <p class="Descricao_Acao">Faça parte da mudança! Contribua para transformar comunidades através da pintura de casas e deixe sua marca no mundo!</p>
+                        <p class="Nome_ONG">ONG: ??</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <img class="Imagem_card" src="Imagens/Imagem Card - Doação de Roupas.png" alt="">
+                    <div class="Conteudo_Card">
+                        <h1 class="titulo_card">Doação de Roupas</h1>
+                        <div class="Detalhes_Card">
+                            <section class="Localizacao-card">
+                                <span>📍</span>
+                                <p class="Cidade_Zona_Card_Acao">São Paulo, ZL</p>
+                            </section>
+                            <p class="Data_Acao">14/09/2024</p>
+                        </div>
+                        <p class="Descricao_Acao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non quam vel libero feugiat ullamcorper. Vivamus sit amet justo nec turpis consequat ultricies.</p>
+                        <p class="Nome_ONG">ONG: ??</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <img class="Imagem_card" src="Imagens/Imagem Card - Doacão de Alimento.png" alt="">
+                    <div class="Conteudo_Card">
+                        <h1 class="titulo_card">Doação de Alimentos</h1>
+                        <div class="Detalhes_Card">
+                            <section class="Localizacao-card">
+                                <span>📍</span>
+                                <p class="Cidade_Zona_Card_Acao">São Paulo, ZO</p>
+                            </section>
+                            <p class="Data_Acao">20/10/2024</p>
+                        </div>
+                        <p class="Descricao_Acao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non quam vel libero feugiat ullamcorper. Vivamus sit amet justo nec turpis consequat ultricies.</p>
+                        <p class="Nome_ONG">ONG: ??</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <img class="Imagem_card" src="Imagens/Imagem Card - Doação de Brinquedos.png" alt="">
+                    <div class="Conteudo_Card">
+                        <h1 class="titulo_card">Doação de Brinquedos</h1>
+                        <div class="Detalhes_Card">
+                            <section class="Localizacao-card">
+                                <span>📍</span>
+                                <p class="Cidade_Zona_Card_Acao">São Paulo, ZS</p>
+                            </section>
+                            <p class="Data_Acao">16/10/2024</p>
+                        </div>
+                        <p class="Descricao_Acao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non quam vel libero feugiat ullamcorper. Vivamus sit amet justo nec turpis consequat ultricies.</p>
+                        <p class="Nome_ONG">ONG: ??</p>
+                    </div>
+                </div>
+            </div>
+            <a href="">
+                <button class="Botao_Ver_Mais_Vagas">Ver mais vagas</button>
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <Footer class="Footer">
+        <div class="Conteudo_Footer">
+            <a href="">
+                <img src="Imagens/Logo-removebg-preview 1.png" alt="Logo" class="logo-menu">
+            </a>
+            <div class="Botoes_Footer">
+                <a href="#Sessao_Quem_Nos_Somos">
+                    <button class="Botao_Footer">Sobre nós</button>
+                </a>
+                <a href="">
+                    <button class="Botao_Footer">Seja voluntario!</button>
+                </a>
+                <a href="#Sessao_Vagas">
+                    <button class="Botao_Footer">Vagas</button>
+                </a>
+                <a href="#Sessao_Categorias_de_vagas">
+                    <button class="Botao_Footer">Causas</button>
+                </a>
+            </div>
+        </div>
+    </Footer>
 </body>
 </html>

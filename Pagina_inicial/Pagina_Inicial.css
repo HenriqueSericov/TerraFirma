@@ -151,15 +151,19 @@ input::placeholder {
 }
 
 .Conteudo_Quem_Nos_Somos{
+    /* Organização de elementos filhos */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
 .Info_Quem_Nos_Somos{
+    /* Organização de elementos filhos */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
+    /* Tamanho */
     width: 60%;
 }
 
@@ -171,7 +175,10 @@ input::placeholder {
 }
 
 .Texto_Quem_Nos_Somos{  
+    /* Tamanho */
     width: 90%;
+
+    /* Texto */
     font-size: 27px;
 }
 
@@ -180,23 +187,36 @@ input::placeholder {
     width: 40%;
     height: 200%;
 
+    /* Borda */
     border: none;
     border-radius: 20px;
+
+    /* Cor */
     background-color: #007BFF;
+
+    /* Texto */   
     color: #fff;
     font-size: 26px;
+
+    /* Detalhes */
     cursor: pointer;
 }
 
 .Botao_Seja_Voluntario:hover{
+    /* Tamanho */
     height: 217%;
+
+    /* Texto */
     font-size: 28px;
     font-weight: bold;
 }
 
 
 .Imagem_Quem_Nos_Somos{
+    /* Tamanho */
     height: 90%;
+
+    /* Borda */
     border-right: 20px solid #28A745;
     border-bottom: 20px solid #28A745;
     border-radius: 30px;
@@ -204,14 +224,20 @@ input::placeholder {
 }
 
 .Sessao_Objetivos{
+    /* Tamanho */
     margin-top: 2%;
     height: 80%;
+
+    /* Borda */
     border-bottom: 2px solid #000000;
 }
 
 .Conteudo_Objetivos{
+    /* Tamanho */
     width: 100%;
     height: 100%;
+
+    /* Organização dos elementos filhos */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -219,7 +245,10 @@ input::placeholder {
 }
 
 .Textos_Objetivo{
+    /* Tamanho */
     height: 40%;
+
+    /* Organização dos elementos filhos */   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,6 +256,7 @@ input::placeholder {
 }
 
 .Titulo_Objetivos{
+    /* Texto */
     text-align: center;
     font-size: 42px;
     color: #28A745;
@@ -234,12 +264,284 @@ input::placeholder {
 }
 
 .Texto_Objetivo{
+    /* Tamanho */
     width: 70%;
+
+    /* Texto */
     font-size: 30px;
 }
 
 .ODSs{
+    /* Tamanho */
     width: 100%;
+
+    /* Organização dos elementos filhos */
     display: flex;
     justify-content: space-around;
+}
+
+.Sessao_Categorias_de_vagas{
+    /* Tamanho */
+    height: 80%;
+
+}
+
+.Categorias{
+    /* Tamanho */
+    margin-top: 5%;
+    height: 80%;
+
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.Titulo_Categorias{
+    /* Texto */
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.Tipos_Categoria{
+    /* Tamanho */
+    width: 100%;
+
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Botao_Ver_mais{
+    /* Tamanho */
+    width: 180px;
+    height: 70px;
+
+    /* Borda */
+    border-radius: 10px;
+    border: none;
+
+    /* Detalhes */
+    background: none;
+
+
+    /* Texto */
+    color: #0094FF;
+    font-size: 30px;
+    font-weight: bold;
+
+    /* Detalhes */
+    cursor: pointer;
+}
+
+.Botao_Ver_mais:hover{
+    /* Texto */
+    color: #fff;
+    background-color: #007BFF;
+    transition: 0.5s;
+}
+
+.Sessao_Vagas{
+    /* Tamanho */
+    height: 85%;
+    width: 100%;
+}
+
+.Titulo_Vagas{
+    /* Texto */
+    font-size: 44px;
+    font-weight: bold;
+}
+
+.Vagas{
+    /* Tamanho */
+    height: 90%;
+
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Cards_Vagas{
+
+    /* Organização dos elementos filhos */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.Card {
+    /* Tamanho */
+    width: 255px;
+    height: 400px;
+
+    /* Borda */
+    border: 2px solid #d3d3d3;
+    border-radius: 20px;
+
+    /*Detalhes*/
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7); /* Sombra inicial mais escura */
+    transition: box-shadow 0.5s ease-in-out; /* Transição suave para o hover */
+}
+
+.Card:hover {
+    /*Detalhes*/
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.9); /* Sombra ainda mais escura ao passar o mouse */
+}
+
+.Conteudo_Card{
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    justify-content: center;
+}
+
+.Detalhes_Card{
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /*Detalhes*/
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.titulo_card{
+    /*Texto*/
+    text-align: center;
+    font-size: 15px;
+}
+
+.Localizacao-card{
+    /* Tamanho */
+    width: 100%;
+
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+}
+
+.Cidade_Zona_Card_Acao{
+    /*Texto*/
+    font-size: 12px;
+    color: #0087E9;
+    font-weight: bold;
+}
+
+.Data_Acao{
+    /*Texto*/
+    font-size: 12px;
+    color: #FD7E14;
+    font-weight: bold;
+}
+
+.Descricao_Acao{
+    /*Texto*/
+    font-size: 15px;
+
+    /* Tamanho */   
+    width: 95%;
+    height: 110px;
+
+    /*Detalhes*/   
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.Nome_ONG{
+    /*Detalhes*/  
+    padding-left: 5px; 
+
+    /*Texto*/
+    font-size: 15px;
+    opacity: 0.7; /* 50% de opacidade */
+}
+
+.Botao_Ver_Mais_Vagas{
+    /*Borda*/  
+    border: none;
+    border-radius: 10px;
+
+    /*Cor*/
+    background: none;
+
+    /*Tamanho*/
+    height: 60px;
+    width: 250px;
+
+    /*Texto*/
+    color: #0094FF;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.Botao_Ver_Mais_Vagas:hover{
+    /*Cor*/
+    background-color: #007BFF;
+
+    /*Texto*/
+    color: #fff;
+
+    /*Detalhes*/  
+    transition: 0.5s;
+}
+
+.Footer{
+    /*Tamanho*/  
+    height: 10%;
+
+    /*Cor*/  
+    background-color: #007BFF;
+}
+
+.Conteudo_Footer{
+    display: flex;
+    align-items: center;
+}
+
+.Botoes_Footer{
+    /*Tamanho*/  
+    width: 100%;
+
+    /* Organização dos elementos filhos */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.Botao_Footer{
+    /*Cor*/ 
+    background: none;
+
+    /*Borda*/ 
+    border: none;
+
+    /*Texto*/ 
+    font-size: 18px;
+}
+
+.Botao_Footer:hover{
+    /*Cor*/ 
+    color: #FD7E14;
+
+    /*Detalhes*/  
+    transition: 0.5s;
+}
+
+.Imagem_card{
+    /*Tamanho*/  
+    width: 100%;
+    border-radius: 20px 20px 0 0;
 }

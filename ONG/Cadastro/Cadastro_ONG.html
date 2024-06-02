@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraFirma</title>
+
+    <!-- Adicione o link para a biblioteca do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="icon" href="/TerraFirma/Pagina_inicial/Imagens/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="Cadastro_ONG.css">
+</head>
+
+<body>
+    <div class="Tela_de_Cadastro_ONG">
+        <div class="Parte_Esqueda">
+            <a href="\TerraFirma\Pagina_inicial\Pagina_inicial.html">
+                <button class="Botao_de_retorno">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </a>
+            <img src="../Imagens/Imagem_Lateral_Cadastro_ONG.png" alt="Imagem_Lateral_Cadastro_ONG"
+                class="Imagem_Lateral_Cadastro_ONG">
+        </div>
+        <div class="Parte_Direita">
+            <h1 class="Titulo_Cadastro_ONG">Cadastro de ONG</h1>
+            <div class="Inputs">
+
+                <section class="Inputs_Esquerda">
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Nome da ONG</p>
+                        <input type="text" id="Input_Nome_ONG" class="Input" placeholder="Nome">
+                        <p class="Campo_Invalido" id="Campo_Erro_Nome_ONG" style="display: none;">O campo não pode estar vazio!</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">CNPJ</p>
+                        <input type="text" id="Input_CNPJ" class="Input" placeholder="CNPJ: XXXXXXXXXXXXXX">
+                        <p class="Campo_Invalido" id="Campo_Erro_CNPJ" style="display: none;">CNPJ Invalido! O CNPJ deve conter 14 digitos!</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Estado</p>
+                        <select class="Input" id="Input_Estado">
+                            <option value="Selecione">Selecione um estado</option>
+                        </select>
+                        <p class="Campo_Invalido" id="Campo_Erro_Estado" style="display: none;">Selecione uma opção!</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Cidade</p>
+                        <select id="Input_Cidade" class="Input">
+                            <option value="Selecione">Selecione uma cidade</option>
+                        </select>
+                        <p class="Campo_Invalido" id="Campo_Erro_Cidade" style="display: none;">Selecione uma opção!</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Senha</p>
+                        <input type="text" id="Input_Senha" class="Input" placeholder="Senha">
+                        <p class="Campo_Invalido" id="Campo_Errado_Senha" style="display: none;">Senha inválida! Deve conter pelo menos 1 número e 1 caractere especial.</p>
+                    </div>
+
+                </section>
+
+                <section class="Inputs_Direita">
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Telefone</p>
+                        <input type="text" id="Input_Telefone" class="Input" placeholder="Telefone: XXXXXXXXX">
+                        <p class="Campo_Invalido" id="Campo_Errado_Telefone" style="display: none;">Telefone invalido! Deve conter 9 digitos!</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Email Profissional</p>
+                        <input type="text" id="Input_Email" class="Input" placeholder="Email">
+                        <p class="Campo_Invalido" id="Campo_Errado_Email" style="display: none;">Email Inválido</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Tipo de ONG</p>
+                        <select class="Input" id="Input_Tipo_ONG">
+                            <option value="Selecione">Selecione um tipo de ONG</option>
+                        </select>
+                        <p class="Campo_Invalido" id="Campo_Errado_Tipo_ONG" style="display: none;">Selecione uma opção!</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Endereço</p>
+                        <input type="text" id="Input_Endereco" class="Input" placeholder="Rua: XXXXXXXXX 00">
+                        <p class="Campo_Invalido" id="Campo_Errado_Endereco" style="display: none;">O campo não pode estar vazio</p>
+                    </div>
+
+                    <div class="Conjunto_Input">
+                        <p class="Nome_Input">Confirmar Senha</p>
+                        <input type="text" id="Input_Confirmacao_de_senha" class="Input" placeholder="Confirmar Senha">
+                        <p class="Campo_Invalido" id="Campo_Errado_Confirmar_Senha" style="display: none;">Senhas não incompatíveis!</p>
+                    </div>
+
+                </section>
+            </div>
+            <div class="Botões">
+                <a href="">
+                    <button class="Botao_Cadastrar">Cadastrar</button>
+                </a>
+                <a href="">
+                    <button class="Botao_Entrar_ONG">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">ONG</span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const Estados = [
+            "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
+            "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
+            "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
+            "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+            "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
+            "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+        ];
+
+        const selectEstados = Input_Estado;
+
+        for (let i = 0; i < Estados.length; i++) {
+            const option = document.createElement('option');
+            option.text = Estados[i];
+            option.value = Estados[i];
+            selectEstados.appendChild(option);
+        }
+
+        const cidades = [
+            "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
+            "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
+            "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
+        ];
+
+        const selectCidades = Input_Cidade;
+
+        for (let i = 0; i < cidades.length; i++) {
+            const option = document.createElement('option');
+            option.text = cidades[i];
+            option.value = cidades[i];
+            selectCidades.appendChild(option);
+        }
+
+        const tiposONG = [
+            "Ambiental", "Educação", "Saúde", "Direitos Humanos", "Assistência Social",
+            "Cultura", "Desenvolvimento Comunitário", "Defesa Animal", "Desenvolvimento Sustentável",
+            "Habitat", "Desenvolvimento Urbano", "Esportes", "Arte e Cultura", "Outros"
+        ];
+
+        const selectTipoONG = Input_Tipo_ONG;
+
+        for (let i = 0; i < tiposONG.length; i++) {
+            const option = document.createElement('option');
+            option.text = tiposONG[i];
+            option.value = tiposONG[i];
+            selectTipoONG.appendChild(option);
+        }
+    </script>
+</body>
+</html>

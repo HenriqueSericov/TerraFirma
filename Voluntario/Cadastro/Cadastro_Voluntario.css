@@ -1,0 +1,165 @@
+*{
+    /*espaçamento*/
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    /*tamanho*/
+    width: 100%;
+    height: 100vh;
+    /*organização de elementos filhos*/ 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.Tela_de_Cadastro_Voluntario{
+    /*tamanho*/
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.Parte_Esqueda{
+    width: 50%;
+    height: 100%;
+}
+
+.Imagem_Lateral_Cadastro_Voluntario{
+    width: 100%;
+    height: 100%;
+}
+
+.Botao_de_retorno{
+    position: fixed;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: white;
+    border: 1px solid rgb(0, 0, 0);
+    width: 8vh;
+    height: 8vh;
+    border-radius: 100%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.Botao_de_retorno:hover{
+    background-color: #007BFF;
+    color: beige;
+}
+
+.Parte_Direita{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Titulo_Cadastro_Voluntario{
+    font-size: 5vh;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Inputs{
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Inputs_Esquerda{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Inputs_Direita{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Conjunto_Input{
+    height: 15%;
+
+    width: 40vh;
+}
+
+.Nome_Input{
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+
+.Input {
+    width: 100%;
+    height: 60%;
+    padding-left: 10px;
+    outline: none;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Adiciona sombreamento na parte inferior */
+}
+
+input::placeholder {
+    /* Cor */
+    font-size: 2vh;
+}
+
+select {
+    font-size: 2vh; /* Define o tamanho da fonte do elemento select */
+}
+
+select option {
+    font-size: 14px; /* Defina o tamanho da fonte conforme desejado */
+}
+
+.Campo_Invalido{
+    width: 100%;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: red;
+}
+
+.Botões{
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Botao_Cadastrar{
+    width: 35vh;
+    height: 8vh;
+    border: none;
+    border-radius: 10px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 3.5vh;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.Botao_Cadastrar:hover{
+    width: 36vh;
+    height: 9vh;
+    font-size: 4vh;
+}
+
+.Botao_Entrar_Voluntario{
+    border: none;
+    font-size: 2vh;
+    background: none repeat scroll;
+    font-weight: 700;
+    cursor: pointer;
+}

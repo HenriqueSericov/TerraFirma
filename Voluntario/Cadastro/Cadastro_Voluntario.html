@@ -103,51 +103,50 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const Estados = [
-            "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
-            "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
-            "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
-            "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
-            "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
-            "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
-        ];
-
-        const selectEstados = Input_Estado;
-
-        for (let i = 0; i < Estados.length; i++) {
-            const option = document.createElement('option');
-            option.text = Estados[i];
-            option.value = Estados[i];
-            selectEstados.appendChild(option);
-        }
-
-        const cidades = [
-            "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
-            "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
-            "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
-        ];
-
-        const selectCidades = Input_Cidade;
-
-        for (let i = 0; i < cidades.length; i++) {
-            const option = document.createElement('option');
-            option.text = cidades[i];
-            option.value = cidades[i];
-            selectCidades.appendChild(option);
-        }
-
-        const Zonas = ["Zona Sul", "Zona Norte", "Zona Leste", "Zona Oeste", "Centro"];
-
-        const selectZona = Input_Zona;
-
-        for (let i = 0; i < Zonas.length; i++) {
-            const option = document.createElement('option');
-            option.text = Zonas[i];
-            option.value = Zonas[i];
-            selectZona.appendChild(option);
-        }
-    </script>
 </body>
 </html>
+<script>
+    const Estados = [
+        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
+        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
+        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
+        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
+        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+    ];
+
+    const selectEstados = Input_Estado;
+
+    for (let i = 0; i < Estados.length; i++) {
+        const option = document.createElement('option');
+        option.text = Estados[i];
+        option.value = Estados[i];
+        selectEstados.appendChild(option);
+    }
+
+    const cidades = [
+        "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
+        "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
+        "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
+    ];
+
+    const selectCidades = Input_Cidade;
+
+    for (let i = 0; i < cidades.length; i++) {
+        const option = document.createElement('option');
+        option.text = cidades[i];
+        option.value = cidades[i];
+        selectCidades.appendChild(option);
+    }
+
+    const Zonas = ["Zona Sul", "Zona Norte", "Zona Leste", "Zona Oeste", "Centro"];
+
+    const selectZona = Input_Zona;
+
+    for (let i = 0; i < Zonas.length; i++) {
+        const option = document.createElement('option');
+        option.text = Zonas[i];
+        option.value = Zonas[i];
+        selectZona.appendChild(option);
+    }
+</script>

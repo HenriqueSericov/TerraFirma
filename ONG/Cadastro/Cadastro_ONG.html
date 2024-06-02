@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" href="Cadastro_ONG.css">
+    <script src="Cadastro.js"></script>
 </head>
 
 <body>
@@ -36,13 +37,13 @@
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Nome da ONG</p>
                         <input type="text" id="Input_Nome_ONG" class="Input" placeholder="Nome">
-                        <p class="Campo_Invalido" id="Campo_Erro_Nome_ONG" style="display: none;">O campo não pode estar vazio!</p>
+                        <p class="Campo_Invalido" id="Campo_Erro_Nome_ONG"></p>
                     </div>
 
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">CNPJ</p>
                         <input type="text" id="Input_CNPJ" class="Input" placeholder="CNPJ: XXXXXXXXXXXXXX">
-                        <p class="Campo_Invalido" id="Campo_Erro_CNPJ" style="display: none;">CNPJ Invalido! O CNPJ deve conter 14 digitos!</p>
+                        <p class="Campo_Invalido" id="Campo_Erro_CNPJ"></p>
                     </div>
 
                     <div class="Conjunto_Input">
@@ -50,7 +51,7 @@
                         <select class="Input" id="Input_Estado">
                             <option value="Selecione">Selecione um estado</option>
                         </select>
-                        <p class="Campo_Invalido" id="Campo_Erro_Estado" style="display: none;">Selecione uma opção!</p>
+                        <p class="Campo_Invalido" id="Campo_Erro_Estado"></p>
                     </div>
 
                     <div class="Conjunto_Input">
@@ -58,13 +59,13 @@
                         <select id="Input_Cidade" class="Input">
                             <option value="Selecione">Selecione uma cidade</option>
                         </select>
-                        <p class="Campo_Invalido" id="Campo_Erro_Cidade" style="display: none;">Selecione uma opção!</p>
+                        <p class="Campo_Invalido" id="Campo_Erro_Cidade"></p>
                     </div>
 
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Senha</p>
-                        <input type="text" id="Input_Senha" class="Input" placeholder="Senha">
-                        <p class="Campo_Invalido" id="Campo_Errado_Senha" style="display: none;">Senha inválida! Deve conter pelo menos 1 número e 1 caractere especial.</p>
+                        <input type="password" id="Input_Senha" class="Input" placeholder="Senha">
+                        <p class="Campo_Invalido" id="Campo_Errado_Senha"></p>
                     </div>
 
                 </section>
@@ -74,13 +75,13 @@
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Telefone</p>
                         <input type="text" id="Input_Telefone" class="Input" placeholder="Telefone: XXXXXXXXX">
-                        <p class="Campo_Invalido" id="Campo_Errado_Telefone" style="display: none;">Telefone invalido! Deve conter 9 digitos!</p>
+                        <p class="Campo_Invalido" id="Campo_Errado_Telefone"></p>
                     </div>
 
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Email Profissional</p>
                         <input type="text" id="Input_Email" class="Input" placeholder="Email">
-                        <p class="Campo_Invalido" id="Campo_Errado_Email" style="display: none;">Email Inválido</p>
+                        <p class="Campo_Invalido" id="Campo_Errado_Email"></p>
                     </div>
 
                     <div class="Conjunto_Input">
@@ -88,26 +89,26 @@
                         <select class="Input" id="Input_Tipo_ONG">
                             <option value="Selecione">Selecione um tipo de ONG</option>
                         </select>
-                        <p class="Campo_Invalido" id="Campo_Errado_Tipo_ONG" style="display: none;">Selecione uma opção!</p>
+                        <p class="Campo_Invalido" id="Campo_Errado_Tipo_ONG"></p>
                     </div>
 
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Endereço</p>
                         <input type="text" id="Input_Endereco" class="Input" placeholder="Rua: XXXXXXXXX 00">
-                        <p class="Campo_Invalido" id="Campo_Errado_Endereco" style="display: none;">O campo não pode estar vazio</p>
+                        <p class="Campo_Invalido" id="Campo_Errado_Endereco"></p>
                     </div>
 
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Confirmar Senha</p>
-                        <input type="text" id="Input_Confirmacao_de_senha" class="Input" placeholder="Confirmar Senha">
-                        <p class="Campo_Invalido" id="Campo_Errado_Confirmar_Senha" style="display: none;">Senhas não incompatíveis!</p>
+                        <input type="password" id="Input_Confirmacao_de_senha" class="Input" placeholder="Confirmar Senha">
+                        <p class="Campo_Invalido" id="Campo_Errado_Confirmar_Senha"></p>
                     </div>
 
                 </section>
             </div>
             <div class="Botões">
                 <a href="">
-                    <button class="Botao_Cadastrar">Cadastrar</button>
+                    <button class="Botao_Cadastrar" onclick="Cadastrar()">Cadastrar</button>
                 </a>
                 <a href="">
                     <button class="Botao_Entrar_ONG">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">ONG</span></button>
@@ -115,55 +116,204 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const Estados = [
-            "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
-            "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
-            "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
-            "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
-            "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
-            "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
-        ];
-
-        const selectEstados = Input_Estado;
-
-        for (let i = 0; i < Estados.length; i++) {
-            const option = document.createElement('option');
-            option.text = Estados[i];
-            option.value = Estados[i];
-            selectEstados.appendChild(option);
-        }
-
-        const cidades = [
-            "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
-            "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
-            "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
-        ];
-
-        const selectCidades = Input_Cidade;
-
-        for (let i = 0; i < cidades.length; i++) {
-            const option = document.createElement('option');
-            option.text = cidades[i];
-            option.value = cidades[i];
-            selectCidades.appendChild(option);
-        }
-
-        const tiposONG = [
-            "Ambiental", "Educação", "Saúde", "Direitos Humanos", "Assistência Social",
-            "Cultura", "Desenvolvimento Comunitário", "Defesa Animal", "Desenvolvimento Sustentável",
-            "Habitat", "Desenvolvimento Urbano", "Esportes", "Arte e Cultura", "Outros"
-        ];
-
-        const selectTipoONG = Input_Tipo_ONG;
-
-        for (let i = 0; i < tiposONG.length; i++) {
-            const option = document.createElement('option');
-            option.text = tiposONG[i];
-            option.value = tiposONG[i];
-            selectTipoONG.appendChild(option);
-        }
-    </script>
 </body>
 </html>
+<script>
+    const Estados = [
+        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
+        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
+        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
+        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
+        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+    ];
+
+    const selectEstados = Input_Estado;
+
+    for (let i = 0; i < Estados.length; i++) {
+        const option = document.createElement('option');
+        option.text = Estados[i];
+        option.value = Estados[i];
+        selectEstados.appendChild(option);
+    }
+
+    const cidades = [
+        "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
+        "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
+        "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
+    ];
+
+    const selectCidades = Input_Cidade;
+
+    for (let i = 0; i < cidades.length; i++) {
+        const option = document.createElement('option');
+        option.text = cidades[i];
+        option.value = cidades[i];
+        selectCidades.appendChild(option);
+    }
+
+    const tiposONG = [
+        "Ambiental", "Educação", "Saúde", "Direitos Humanos", "Assistência Social",
+        "Cultura", "Desenvolvimento Comunitário", "Defesa Animal", "Desenvolvimento Sustentável",
+        "Habitat", "Desenvolvimento Urbano", "Esportes", "Arte e Cultura", "Outros"
+    ];
+
+    const selectTipoONG = Input_Tipo_ONG;
+
+    for (let i = 0; i < tiposONG.length; i++) {
+        const option = document.createElement('option');
+        option.text = tiposONG[i];
+        option.value = tiposONG[i];
+        selectTipoONG.appendChild(option);
+    }
+
+
+    function Cadastrar() {
+        const NOME_ONG = Input_Nome_ONG.value
+        const CNPJ = Input_CNPJ.value
+        const ESTADO = Input_Estado.value
+        const CIDADE = Input_Cidade.value
+        const SENHA = Input_Senha.value
+        const TELEFONE = Input_Telefone.value
+        const EMAIL = Input_Email.value
+        const TIPO_ONG = Input_Tipo_ONG.value
+        const ENDERECO = Input_Endereco.value
+        const CONFIRMACAO_SENHA= Input_Confirmacao_de_senha.value
+
+        let Qnt_Campo_Errado = 0
+
+
+        // Reset all fields' styles
+        const fields = [
+            { element: Input_Nome_ONG, errorElement: Campo_Erro_Nome_ONG },
+            { element: Input_CNPJ, errorElement: Campo_Erro_CNPJ },
+            { element: Input_Estado, errorElement: Campo_Erro_Estado },
+            { element: Input_Cidade, errorElement: Campo_Erro_Cidade },
+            { element: Input_Senha, errorElement: Campo_Errado_Senha },
+            { element: Input_Telefone, errorElement: Campo_Errado_Telefone },
+            { element: Input_Email, errorElement: Campo_Errado_Email },
+            { element: Input_Tipo_ONG, errorElement: Campo_Errado_Tipo_ONG },
+            { element: Input_Endereco, errorElement: Campo_Errado_Endereco },
+            { element: Input_Confirmacao_de_senha, errorElement: Campo_Errado_Confirmar_Senha },
+        ];
+
+        fields.forEach(field => {
+            field.element.style.border = "";
+            field.errorElement.innerHTML = "";
+        });
+
+        if (!NOME_ONG) {
+            Qnt_Campo_Errado++;
+            Input_Nome_ONG.style.border = "1px solid red";
+            Campo_Erro_Nome_ONG.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+        }
+
+        const cnpjRegex = /^\d{14}$/;
+        if (CNPJ) {
+            if (!cnpjRegex.test(CNPJ)) {
+                Qnt_Campo_Errado++;
+                Input_CNPJ.style.border = "1px solid red";
+                Campo_Erro_CNPJ.innerHTML = "CNPJ Invalido! Deve conter 14 digitos e apenas numeros!";
+                event.preventDefault();
+            }
+        } else {
+            Qnt_Campo_Errado++;
+            Input_CNPJ.style.border = "1px solid red";
+            Campo_Erro_CNPJ.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+        }
+
+        if (ESTADO === "Selecione") {
+            Qnt_Campo_Errado++;
+            Input_Estado.style.border = "1px solid red";
+            Campo_Erro_Estado.innerHTML = "Selecione uma opção!";
+        }
+
+        if (CIDADE === "Selecione") {
+            Qnt_Campo_Errado++;
+            Input_Cidade    .style.border = "1px solid red";
+            Campo_Erro_Cidade.innerHTML = "Selecione uma opção!";
+        }
+
+        const senhaRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+        if (SENHA) {
+            if (!senhaRegex.test(SENHA)) {
+                Qnt_Campo_Errado++;
+                Input_Senha.style.border = "1px solid red";  
+                Campo_Errado_Senha.innerHTML = "Senha inválida! Deve conter pelo menos 8 dígitos, 1 número e 1 caractere especial.";
+                event.preventDefault();
+            } 
+        }
+        else {
+                Qnt_Campo_Errado++;
+                Input_Senha.style.border = "1px solid red";
+                Campo_Errado_Senha.innerHTML = "O campo não pode estar vazio!";
+                event.preventDefault();
+            }
+        
+        if (TELEFONE) {
+            if(TELEFONE.length != 9) {
+                Qnt_Campo_Errado++;
+                    Input_Telefone.style.border = "1px solid red";
+                    Campo_Errado_Telefone.innerHTML = "Telefone invalido! Deve conter 9 digitos e apenas numeros!";
+                    event.preventDefault();
+            }
+        }
+        else {
+            Qnt_Campo_Errado++;
+            Input_Telefone.style.border = "1px solid red";
+            Campo_Errado_Telefone.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+        }
+
+        if (EMAIL) {
+            if (EMAIL.indexOf('@') === -1 || EMAIL.indexOf('.') === -1) {
+                Qnt_Campo_Errado++;
+                Input_Email.style.border = "1px solid red";
+                Campo_Errado_Email.innerHTML = "E-mail inválido! Deve conter '@' e '.'";
+                Campo_Errado_Email.style.display = "block";
+                event.preventDefault();
+            }
+        } else {
+            Qnt_Campo_Errado++;
+            Input_Email.style.border = "1px solid red";
+            Campo_Errado_Email.innerHTML = "O campo não pode estar vazio!";
+            Campo_Errado_Email.style.display = "block";
+            event.preventDefault();
+        }
+
+        if (TIPO_ONG === "Selecione") {
+            Qnt_Campo_Errado++;
+            Input_Tipo_ONG.style.border = "1px solid red";
+            Campo_Errado_Tipo_ONG.innerHTML = "Selecione uma opção!";
+            event.preventDefault();
+        }
+
+        if (!ENDERECO){
+            Qnt_Campo_Errado++;
+            Input_Endereco.style.border = "1px solid red";
+            Campo_Errado_Endereco.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+        }
+
+        if(CONFIRMACAO_SENHA){
+            if(CONFIRMACAO_SENHA != SENHA){
+                Qnt_Campo_Errado++;
+                Input_Confirmacao_de_senha.style.border = "1px solid red";
+                Campo_Errado_Confirmar_Senha.innerHTML = "Senhas não incompatíveis!";
+                event.preventDefault();
+            }
+        }
+        else{
+            Qnt_Campo_Errado++;
+            Input_Confirmacao_de_senha.style.border = "1px solid red";
+            Campo_Errado_Confirmar_Senha.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+        }
+
+        if(Qnt_Campo_Errado == 0){
+            alert("Parabens!")
+        }
+}
+</script>

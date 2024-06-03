@@ -10,8 +10,8 @@ function listar() {
 
 function cadastrar(NomeONG, CNPJ, Estado, Cidade, Senha, Telefone, Email, TipoONG, Endereco, fkVoluntario ) {
     var instrucao = `
-        INSERT INTO Endereco (Estado, Cidade, Endereco) VALUES ('${Estado}', '${Cidade}', '${Endereco}');
-        INSERT INTO ONG (NomeONG, CNPJ, Senha, Telefone, Email, TipoONG, fkVoluntario) VALUES ('${NomeONG}', '${CNPJ}', '${Senha}', '${Telefone}', '${Email}', '${TipoONG}', '${fkVoluntario}');
+        INSERT INTO Endereco (Estado, Cidade, Rua) VALUES ('${Estado}', '${Cidade}', '${Endereco}');
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

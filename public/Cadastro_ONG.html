@@ -174,7 +174,6 @@
         Input_Senha.value = "12345678@"
         Input_Telefone.value = 123456789
         Input_Email.value = "@."
-        Input_Tipo_ONG.value = "Teste"
         Input_Endereco.value = "Rua Teste"
         Input_Confirmacao_de_senha.value = "12345678@"
 
@@ -323,7 +322,7 @@
         }
 
         if(Qnt_Campo_Errado == 0){
-            
+            event.preventDefault();
             fetch("/ONGs/cadastrar", {
                 method: "POST",
                 headers: {
@@ -348,24 +347,18 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                    cardErro.style.display = "block";
-
-                    mensagem_erro.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+              
 
                     setTimeout(() => {
                         window.location = "login.html";
                     }, "2000");
 
-                    limparFormulario();
-                    finalizarAguardar();
                     } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                     }
                 })
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
-                    finalizarAguardar();
                 });
 
                 return false;

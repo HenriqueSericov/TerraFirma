@@ -19,8 +19,9 @@ function cadastrar(req, res) {
     var Email = req.body.Email;
     var TipoONG = req.body.TipoONG;
     var Endereco = req.body.Endereco;
+    var fkVoluntario = req.body.fkVoluntario
 
-    if (nome == undefined) {
+    if (NomeONG == undefined) {
         res.status(400).send("Seu nome está undefined!");
     }
     else {

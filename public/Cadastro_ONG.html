@@ -13,8 +13,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <link rel="stylesheet" href="Cadastro_ONG.css">
-    <script src="Cadastro.js"></script>
+    <link rel="stylesheet" href="css/Cadastro_ONG.css">
+    <script src="js/sessao.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                     <i class="fas fa-arrow-left"></i>
                 </button>
             </a>
-            <img src="../Imagens/Imagem_Lateral_Cadastro_ONG.png" alt="Imagem_Lateral_Cadastro_ONG"
+            <img src="assets/imgs/Imagem_Lateral_Cadastro_ONG.png" alt="Imagem_Lateral_Cadastro_ONG"
                 class="Imagem_Lateral_Cadastro_ONG">
         </div>
         <div class="Parte_Direita">
@@ -169,6 +169,15 @@
 
 
     function Cadastrar() {
+        Input_Nome_ONG.value = "Teste"
+        Input_CNPJ.value = 12345678901234
+        Input_Senha.value = "12345678@"
+        Input_Telefone.value = 123456789
+        Input_Email.value = "@."
+        Input_Tipo_ONG.value = "Teste"
+        Input_Endereco.value = "Rua Teste"
+        Input_Confirmacao_de_senha.value = "12345678@"
+
         const NOME_ONG = Input_Nome_ONG.value
         const CNPJ = Input_CNPJ.value
         const ESTADO = Input_Estado.value
@@ -179,6 +188,7 @@
         const TIPO_ONG = Input_Tipo_ONG.value
         const ENDERECO = Input_Endereco.value
         const CONFIRMACAO_SENHA= Input_Confirmacao_de_senha.value
+
 
         let Qnt_Campo_Errado = 0
 
@@ -313,7 +323,52 @@
         }
 
         if(Qnt_Campo_Errado == 0){
-            alert("Parabens!")
-        }
+            
+            fetch("/ONGs/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    NomeONG: NOME_ONG,
+                    CNPJ: CNPJ,
+                    Estado: ESTADO,
+                    Cidade: CIDADE,
+                    Senha: SENHA,
+                    Telefone: TELEFONE,
+                    Email: EMAIL,
+                    TipoONG: TIPO_ONG,
+                    Endereco: ENDERECO,
+                    fkVoluntario: 1
+                }),
+                })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                    } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+                return false;
+    }     
 }
 </script>

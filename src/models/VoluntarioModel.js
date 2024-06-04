@@ -8,9 +8,9 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function cadastrar(NomeONG, CNPJ, CEP, Senha, Telefone, Email, TipoONG) {
+function cadastrar(Nome, Email, Telefone, Senha, fkEstado, fkCidade, fkZona) {
     var instrucao = `
-        INSERT INTO ONG (Nome, Email, Telefone, CNPJ, Senha, CEP, fkTipoONG) VALUES ('${NomeONG}', '${Email}', '${Telefone}', '${CNPJ}', '${Senha}', '${CEP}', '${TipoONG}');
+        INSERT INTO Voluntario (Nome, Email, Telefone, Senha, fkEstado, fkCidade, fkZona) VALUES ('${Nome}', '${Email}', '${Telefone}', '${Senha}', '${fkEstado}', '${fkCidade}', '${fkZona}');
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

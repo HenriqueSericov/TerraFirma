@@ -1,7 +1,7 @@
-var ONGModel = require("../models/ONGModel");
+var VoluntarioModel = require("../models/VoluntarioModel");
 
 function listar(req, res) {
-    ONGModel.listar().then(function(resultado){
+    VoluntarioModel.listar().then(function(resultado){
         // precisamos informar que o resultado voltará para o front-end como uma resposta em json
         res.status(200).json(resultado);
     }).catch(function(erro){
@@ -10,32 +10,32 @@ function listar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var NomeONG = req.body.NomeONG;
-    var CNPJ = req.body.CNPJ;
-    var CEP = req.body.CEP;
-    var Senha = req.body.Senha;
-    var Telefone = req.body.Telefone;
+    var Nome = req.body.Nome;
     var Email = req.body.Email;
-    var TipoONG = req.body.TipoONG;
+    var Telefone = req.body.Telefone;
+    var Senha = req.body.Senha;
+    var fkEstado = req.body.fkEstado;
+    var fkCidade = req.body.fkCidade;
+    var fkZona = req.body.fkZona;
 
-    if (NomeONG == undefined) {
+    if (Nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    }else if(CNPJ == undefined){
-        res.status(400).send("Seu CNPJ está undefined!");        
-    }else if(CEP == undefined){
-        res.status(400).send("Seu CEP está undefined!");        
-    }else if(Senha == undefined){
-        res.status(400).send("Seu Senha está undefined!");        
-    }else if(Telefone == undefined){
-        res.status(400).send("Seu Telefone está undefined!");        
     }else if(Email == undefined){
         res.status(400).send("Seu Email está undefined!");        
-    }else if(TipoONG == undefined){
-        res.status(400).send("Seu TipoONG está undefined!");        
+    }else if(Telefone == undefined){
+        res.status(400).send("Seu Telefone está undefined!");        
+    }else if(Senha == undefined){
+        res.status(400).send("Seu Senha está undefined!");        
+    }else if(fkEstado == undefined){
+        res.status(400).send("Seu fkEstado está undefined!");        
+    }else if(fkCidade == undefined){
+        res.status(400).send("Seu fkCidade está undefined!");        
+    }else if(fkZona == undefined){
+        res.status(400).send("Seu fkZona está undefined!");        
     }
     else {
 
-        ONGModel.cadastrar(NomeONG, CNPJ, CEP, Senha, Telefone, Email, TipoONG)
+        VoluntarioModel.cadastrar(Nome, Email, Telefone, Senha, fkEstado, fkCidade, fkZona)
             .then(
                 function (resultado) {
                     res.json(resultado);

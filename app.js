@@ -17,6 +17,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var ONGsRouter = require("./src/routes/ONGs");
+var VoluntariosRouter = require("./src/routes/Voluntarios");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/ONGs", ONGsRouter);
+app.use("/Voluntarios", VoluntariosRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`

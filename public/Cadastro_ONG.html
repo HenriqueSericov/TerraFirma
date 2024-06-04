@@ -20,7 +20,7 @@
 <body>
     <div class="Tela_de_Cadastro_ONG">
         <div class="Parte_Esqueda">
-            <a href="\TerraFirma\Pagina_inicial\Pagina_inicial.html">
+            <a href="index.html">
                 <button class="Botao_de_retorno">
                     <i class="fas fa-arrow-left"></i>
                 </button>
@@ -47,19 +47,9 @@
                     </div>
 
                     <div class="Conjunto_Input">
-                        <p class="Nome_Input">Estado</p>
-                        <select class="Input" id="Input_Estado">
-                            <option value="Selecione">Selecione um estado</option>
-                        </select>
-                        <p class="Campo_Invalido" id="Campo_Erro_Estado"></p>
-                    </div>
-
-                    <div class="Conjunto_Input">
-                        <p class="Nome_Input">Cidade</p>
-                        <select id="Input_Cidade" class="Input">
-                            <option value="Selecione">Selecione uma cidade</option>
-                        </select>
-                        <p class="Campo_Invalido" id="Campo_Erro_Cidade"></p>
+                        <p class="Nome_Input">CEP</p>
+                        <input type="text" id="Input_CEP" class="Input" placeholder="CEP: xxxxx-xxx">
+                        <p class="Campo_Invalido" id="Campo_Errado_CEP"></p>
                     </div>
 
                     <div class="Conjunto_Input">
@@ -92,11 +82,6 @@
                         <p class="Campo_Invalido" id="Campo_Errado_Tipo_ONG"></p>
                     </div>
 
-                    <div class="Conjunto_Input">
-                        <p class="Nome_Input">Endereço</p>
-                        <input type="text" id="Input_Endereco" class="Input" placeholder="Rua: XXXXXXXXX 00">
-                        <p class="Campo_Invalido" id="Campo_Errado_Endereco"></p>
-                    </div>
 
                     <div class="Conjunto_Input">
                         <p class="Nome_Input">Confirmar Senha</p>
@@ -119,39 +104,6 @@
 </body>
 </html>
 <script>
-    const Estados = [
-        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
-        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
-        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
-        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
-        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
-        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
-    ];
-
-    const selectEstados = Input_Estado;
-
-    for (let i = 0; i < Estados.length; i++) {
-        const option = document.createElement('option');
-        option.text = Estados[i];
-        option.value = Estados[i];
-        selectEstados.appendChild(option);
-    }
-
-    const cidades = [
-        "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
-        "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
-        "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
-    ];
-
-    const selectCidades = Input_Cidade;
-
-    for (let i = 0; i < cidades.length; i++) {
-        const option = document.createElement('option');
-        option.text = cidades[i];
-        option.value = cidades[i];
-        selectCidades.appendChild(option);
-    }
-
     const tiposONG = [
         "Ambiental", "Educação", "Saúde", "Direitos Humanos", "Assistência Social",
         "Cultura", "Desenvolvimento Comunitário", "Defesa Animal", "Desenvolvimento Sustentável",
@@ -160,50 +112,39 @@
 
     const selectTipoONG = Input_Tipo_ONG;
 
-    for (let i = 0; i < tiposONG.length; i++) {
+    for (let Posicao = 0; Posicao < tiposONG.length; Posicao++) {
         const option = document.createElement('option');
-        option.text = tiposONG[i];
-        option.value = tiposONG[i];
+        option.text = tiposONG[Posicao];
+        option.value = Posicao+1;
         selectTipoONG.appendChild(option);
     }
 
 
     function Cadastrar() {
-        Input_Nome_ONG.value = "Teste"
-        Input_CNPJ.value = 12345678901234
-        Input_Senha.value = "12345678@"
-        Input_Telefone.value = 123456789
-        Input_Email.value = "@."
-        Input_Endereco.value = "Rua Teste"
-        Input_Confirmacao_de_senha.value = "12345678@"
 
         const NOME_ONG = Input_Nome_ONG.value
         const CNPJ = Input_CNPJ.value
-        const ESTADO = Input_Estado.value
-        const CIDADE = Input_Cidade.value
+        const CEP = Input_CEP.value
         const SENHA = Input_Senha.value
         const TELEFONE = Input_Telefone.value
         const EMAIL = Input_Email.value
         const TIPO_ONG = Input_Tipo_ONG.value
-        const ENDERECO = Input_Endereco.value
         const CONFIRMACAO_SENHA= Input_Confirmacao_de_senha.value
 
 
         let Qnt_Campo_Errado = 0
 
 
-        // Reset all fields' styles
+        // Reseta o estilo dos campos
         const fields = [
             { element: Input_Nome_ONG, errorElement: Campo_Erro_Nome_ONG },
             { element: Input_CNPJ, errorElement: Campo_Erro_CNPJ },
-            { element: Input_Estado, errorElement: Campo_Erro_Estado },
-            { element: Input_Cidade, errorElement: Campo_Erro_Cidade },
+            { element: Input_CEP, errorElement: Campo_Errado_CEP},
             { element: Input_Senha, errorElement: Campo_Errado_Senha },
             { element: Input_Telefone, errorElement: Campo_Errado_Telefone },
             { element: Input_Email, errorElement: Campo_Errado_Email },
             { element: Input_Tipo_ONG, errorElement: Campo_Errado_Tipo_ONG },
-            { element: Input_Endereco, errorElement: Campo_Errado_Endereco },
-            { element: Input_Confirmacao_de_senha, errorElement: Campo_Errado_Confirmar_Senha },
+            { element: Input_Confirmacao_de_senha, errorElement: Campo_Errado_Confirmar_Senha }
         ];
 
         fields.forEach(field => {
@@ -233,17 +174,6 @@
             event.preventDefault();
         }
 
-        if (ESTADO === "Selecione") {
-            Qnt_Campo_Errado++;
-            Input_Estado.style.border = "1px solid red";
-            Campo_Erro_Estado.innerHTML = "Selecione uma opção!";
-        }
-
-        if (CIDADE === "Selecione") {
-            Qnt_Campo_Errado++;
-            Input_Cidade    .style.border = "1px solid red";
-            Campo_Erro_Cidade.innerHTML = "Selecione uma opção!";
-        }
 
         const senhaRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
         if (SENHA) {
@@ -299,10 +229,19 @@
             event.preventDefault();
         }
 
-        if (!ENDERECO){
+        if (CEP) {
+            if (CEP.length != 9) {
+                Qnt_Campo_Errado++;
+                Input_CEP.style.border = "1px solid red";
+                Campo_Errado_CEP.innerHTML = "CEP inválido! Deve seguir o formato: XXXXX-XXX";
+                Campo_Errado_CEP.style.display = "block";
+                event.preventDefault();
+            }
+        } else {
             Qnt_Campo_Errado++;
-            Input_Endereco.style.border = "1px solid red";
-            Campo_Errado_Endereco.innerHTML = "O campo não pode estar vazio!";
+            Input_CEP.style.border = "1px solid red";
+            Campo_Errado_CEP.innerHTML = "O campo não pode estar vazio!";
+            Campo_Errado_CEP.style.display = "block";
             event.preventDefault();
         }
 
@@ -322,7 +261,6 @@
         }
 
         if(Qnt_Campo_Errado == 0){
-            event.preventDefault();
             fetch("/ONGs/cadastrar", {
                 method: "POST",
                 headers: {
@@ -333,14 +271,11 @@
                     // Agora vá para o arquivo routes/usuario.js
                     NomeONG: NOME_ONG,
                     CNPJ: CNPJ,
-                    Estado: ESTADO,
-                    Cidade: CIDADE,
+                    CEP: CEP,
                     Senha: SENHA,
                     Telefone: TELEFONE,
                     Email: EMAIL,
-                    TipoONG: TIPO_ONG,
-                    Endereco: ENDERECO,
-                    fkVoluntario: 1
+                    TipoONG: TIPO_ONG
                 }),
                 })
                 .then(function (resposta) {

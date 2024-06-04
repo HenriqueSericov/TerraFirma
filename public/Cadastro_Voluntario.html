@@ -188,10 +188,10 @@
         }
 
         if (EMAIL) {
-            if (EMAIL.indexOf('@') === -1 || EMAIL.indexOf('.') === -1) {
+            if (EMAIL.indexOf('@') === -1 || EMAIL.indexOf('.') === -1 || EMAIL.length > 264) {
                 Qnt_Campo_Errado++;
                 Input_Email.style.border = "1px solid red";
-                Campo_Erro_Email.innerHTML = "E-mail inválido! Deve conter '@' e '.'";
+                Campo_Erro_Email.innerHTML = "E-mail inválido! Deve conter '@', '.' e deve ser menor que 264 caracteres";
                 Campo_Erro_Email.style.display = "block";
                 event.preventDefault();
             }

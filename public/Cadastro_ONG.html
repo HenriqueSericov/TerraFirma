@@ -9,7 +9,7 @@
     <!-- Adicione o link para a biblioteca do FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="icon" href="/TerraFirma/Pagina_inicial/Imagens/favicon-32x32.png" type="image/x-icon">
+    <link rel="icon" href="assets/icon/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
@@ -92,6 +92,7 @@
                 </section>
             </div>
             <div class="Botões">
+                <p class="Cadastro_Concluido" id="Cadastro_Concluido">Cadastro realizado com sucesso!</p>
                 <a href="">
                     <button class="Botao_Cadastrar" onclick="Cadastrar()">Cadastrar</button>
                 </a>
@@ -308,6 +309,7 @@
 
 
         if(Validacoes.Cadastro_Valido(Qnt_Campo_Errado)){
+            event.preventDefault();     
             fetch("/ONGs/cadastrar", {
                 method: "POST",
                 headers: {
@@ -324,26 +326,26 @@
                     Email: EMAIL,
                     TipoONG: TIPO_ONG
                 }),
-                })
+            })
                 .then(function (resposta) {
-                    console.log("resposta: ", resposta);
+                        console.log("resposta: ", resposta);
 
-                    if (resposta.ok) {
-              
+                        if (resposta.ok) {
 
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
+                            Cadastro_Concluido.style.display = "block"
+                            setTimeout(() => {
+                                window.location.href = "/Login_ONG.html";
+                            }, 2500);
 
-                    } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
+                        } else {
+                            console.log("SOCORRO")
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
 
-                return false;
+            return false;
     }     
 }
 </script>

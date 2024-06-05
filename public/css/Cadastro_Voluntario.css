@@ -137,6 +137,14 @@ select option {
     justify-content: space-around;
 }
 
+.Cadastro_Concluido{
+    color: rgb(0, 255, 0);
+    font-size: 15px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    display: none;
+}
+
 .Botao_Cadastrar{
     width: 35vh;
     height: 8vh;

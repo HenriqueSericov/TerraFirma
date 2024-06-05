@@ -33,11 +33,7 @@
                 <div class="Conjunto_Input">
                     <p class="Nome_Input">Email</p>
                     <input type="text" id="Input_Email" class="Input" placeholder="Email">
-                    <div id="Campo_Auxiliar">
-                        <a href="Cadastro_ONG.html">
-                            <button class="Botao_Nao_tem_conta">Não tem conta? <span style="color: rgb(25, 0, 255); font-weight: bold;">Cadastre-se</span></button>
-                        </a>
-                    </div>
+                    <p class="Campo_Invalido" id="Campo_Erro_Email"></p>
                 </div>
 
                 <div class="Conjunto_Input">
@@ -51,7 +47,10 @@
                     <button class="Botao_Entrar" onclick="Entrar()"> Entrar</button>
                 </a>
                 <a href="Login_Voluntario.html">
-                    <button class="Botao_Entrar_ONG">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">Voluntario</span></button>
+                    <button class="Botao_Entrar_ONG">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">Voluntário</span></button>
+                </a>
+                <a href="Cadastro_ONG.html">
+                    <button class="Botao_Nao_tem_conta">Não tem conta? <span style="color: rgb(25, 0, 255); font-weight: bold;">Cadastre-se</span></button>
                 </a>
             </div>
         </div>
@@ -80,7 +79,7 @@
 
         const fields = [
             { element: Input_Senha, errorElement: Campo_Erro_Senha },
-            { element: Input_Email, errorElement: Campo_Auxiliar }
+            { element: Input_Email, errorElement: Campo_Erro_Email }
         ];
 
         fields.forEach(field => {
@@ -93,14 +92,14 @@
         if(CampoVazio(EMAIL)){
             Qnt_Campo_Errado++
             Input_Email.style.border = "1px solid red";
-            Campo_Auxiliar.innerHTML = `<p class="Campo_Invalido">"O campo não pode estar vazio!";</p>`
+            Campo_Erro_Email.innerHTML = "O campo não pode estar vazio!"
             event.preventDefault();
         }
         else{
             if(EmailInvalido(EMAIL)) {
                 Qnt_Campo_Errado++
                 Input_Email.style.border = "1px solid red";
-                Campo_Auxiliar.innerHTML = `<p class="Campo_Invalido" id="Campo_Erro_Email">E-mail inválido! Deve conter '@', '.' e deve ser menor que 264 caracteres</p>`
+                Campo_Erro_Email.innerHTML = "E-mail inválido! Deve conter '@', '.' e deve ser menor que 264 caracteres"
                 event.preventDefault();
             }
         }

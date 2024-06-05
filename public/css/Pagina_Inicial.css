@@ -39,11 +39,16 @@ body{
     font-size: 25px;
 }
 
+.Titulo_TerraFirma{
+    /*Texto*/
+    font-size: 4vh;
+    font-weight: bold;
+}
 
 .logo-menu {
     /*Tamanho*/
-    width: 70px;
-    height: 70px;
+    width:9vh;
+    height: 9vh;
 }
 
 .sessao-botoes-menu {

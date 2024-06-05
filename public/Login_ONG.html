@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraFirma</title>
+
+    <!-- Adicione o link para a biblioteca do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="icon" href="assets/icon/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="css/Login_ONG.css">
+</head>
+
+<body>
+    <div class="Tela_de_Login_ONG">
+        <div class="Parte_Esquerda">
+            <a href="index.html">
+                <button class="Botao_de_retorno">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </a>
+            <img src="assets/imgs/Imagem_Lateral_Cadastro_ONG.png" alt="Imagem_Lateral_ONG"
+                class="Imagem_Lateral_Login_ONG">
+        </div>
+        <div class="Parte_Direita">
+            <h1 class="Titulo_Login_ONG">Login de ONG</h1>
+            <div class="Inputs">
+                <div class="Conjunto_Input">
+                    <p class="Nome_Input">Email</p>
+                    <input type="text" id="Input_Email" class="Input" placeholder="Email">
+                    <div id="Campo_Auxiliar">
+                        <a href="Cadastro_ONG.html">
+                            <button class="Botao_Nao_tem_conta">Não tem conta? <span style="color: rgb(25, 0, 255); font-weight: bold;">Cadastre-se</span></button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="Conjunto_Input">
+                    <p class="Nome_Input">Senha</p>
+                    <input type="text" id="Input_Senha" class="Input" placeholder="Senha">
+                    <p class="Campo_Invalido" id="Campo_Erro_Senha"></p>
+                </div>
+
+            <div class="Botões">
+                <a href="">
+                    <button class="Botao_Entrar" onclick="Entrar()"> Entrar</button>
+                </a>
+                <a href="Login_Voluntario.html">
+                    <button class="Botao_Entrar_ONG">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">Voluntario</span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    function CampoVazio(Campo) {
+        return !Campo
+    }
+
+    function EmailInvalido(Email){
+        return Email.indexOf('@') === -1 || Email.indexOf('.') === -1 || Email.length > 264
+        
+    }
+
+    function LoginValido(CamposErrados){
+        return CamposErrados == 0
+    }
+
+    function Entrar() {
+        const EMAIL = Input_Email.value;
+        const SENHA = Input_Senha.value;
+
+
+        const fields = [
+            { element: Input_Senha, errorElement: Campo_Erro_Senha },
+            { element: Input_Email, errorElement: Campo_Auxiliar }
+        ];
+
+        fields.forEach(field => {
+            field.element.style.border = "";
+            field.errorElement.innerHTML = "";
+        });
+        
+        let Qnt_Campo_Errado = 0
+
+        if(CampoVazio(EMAIL)){
+            Qnt_Campo_Errado++
+            Input_Email.style.border = "1px solid red";
+            Campo_Auxiliar.innerHTML = `<p class="Campo_Invalido">"O campo não pode estar vazio!";</p>`
+            event.preventDefault();
+        }
+        else{
+            if(EmailInvalido(EMAIL)) {
+                Qnt_Campo_Errado++
+                Input_Email.style.border = "1px solid red";
+                Campo_Auxiliar.innerHTML = `<p class="Campo_Invalido" id="Campo_Erro_Email">E-mail inválido! Deve conter '@', '.' e deve ser menor que 264 caracteres</p>`
+                event.preventDefault();
+            }
+        }
+
+        if(CampoVazio(SENHA)){
+            Qnt_Campo_Errado++
+            Input_Senha.style.border = "1px solid red";
+            Campo_Erro_Senha.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+        }
+
+        if(LoginValido(Qnt_Campo_Errado)){
+            // VALIDACAO AQUI !!!!
+        }
+
+    }
+</script>

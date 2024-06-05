@@ -18,8 +18,8 @@
 
 <body>
     <div class="Tela_de_Cadastro_Voluntario">
-        <div class="Parte_Esqueda">
-            <a href="index.html">
+        <div class="Parte_Esquerda">
+            <a href="Login_Voluntario.html">
                 <button class="Botao_de_retorno">
                     <i class="fas fa-arrow-left"></i>
                 </button>
@@ -97,7 +97,7 @@
                 <a href="">
                     <button class="Botao_Cadastrar" onclick="Cadastrar()">Cadastrar</button>
                 </a>
-                <a href="">
+                <a href="Login_Voluntario.html">
                     <button class="Botao_Entrar_Voluntario">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">Voluntario</span></button>
                 </a>
             </div>
@@ -150,6 +150,38 @@
         selectZona.appendChild(option);
     }
 
+    function CampoVazio(Campo){
+        return !Campo
+    }
+
+    function OpcaoInvalida(Select){
+        return Select == "Selecione"
+    }
+
+    function EmailInvalido(Email){
+        return Email.indexOf('@') === -1 || Email.indexOf('.') === -1 || Email.length > 264
+        
+    }
+
+    function TelefoneInvalido(Telefone){
+        return Telefone.length != 9
+    }
+
+    function SenhaInvalida(Senha){
+        const senhaRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+        return !senhaRegex.test(Senha)
+    }
+
+    function SenhasIncompatíveis(ConfirmacaoSenha, Senha){
+        return ConfirmacaoSenha != Senha
+    } 
+
+    function CadastroValido(ValidacoesErradas){
+        return ValidacoesErradas == 0
+    }
+
+
+    
     function Cadastrar(){
 
         const NOME = Input_Nome.value;
@@ -160,6 +192,16 @@
         const CIDADE = Input_Cidade.value;
         const TELEFONE = Input_Telefone.value;
         const CONFIRMACAO_SENHA = Input_Confirmacao_de_senha.value;
+
+        const Validacoes = {
+            "Campo_Vazio": CampoVazio,
+            "Opcao_Invalida": OpcaoInvalida,
+            "Email_Invalido": EmailInvalido,
+            "Telefone_Invalido": TelefoneInvalido,
+            "Senha_Invalida": SenhaInvalida,
+            "Senhas_Incompativeis": SenhasIncompatíveis,
+            "Cadastro_Valido": CadastroValido
+        };
 
 
         const fields = [
@@ -180,130 +222,135 @@
 
         let Qnt_Campo_Errado = 0
 
-        if (!NOME) {
+        if (Validacoes.Campo_Vazio(NOME)) {
             Qnt_Campo_Errado++;
             Input_Nome.style.border = "1px solid red";
             Campo_Erro_Nome.innerHTML = "O campo não pode estar vazio!";
             event.preventDefault();
         }
 
-        if (EMAIL) {
-            if (EMAIL.indexOf('@') === -1 || EMAIL.indexOf('.') === -1 || EMAIL.length > 264) {
+        if (Validacoes.Campo_Vazio(EMAIL)) {
+            Qnt_Campo_Errado++;
+            Input_Email.style.border = "1px solid red";
+            Campo_Erro_Email.innerHTML = "O campo não pode estar vazio!";
+            Campo_Erro_Email.style.display = "block";
+            event.preventDefault();
+
+        } else {
+            if (Validacoes.Email_Invalido(EMAIL)) {
                 Qnt_Campo_Errado++;
                 Input_Email.style.border = "1px solid red";
                 Campo_Erro_Email.innerHTML = "E-mail inválido! Deve conter '@', '.' e deve ser menor que 264 caracteres";
                 Campo_Erro_Email.style.display = "block";
                 event.preventDefault();
             }
-        } else {
-            Qnt_Campo_Errado++;
-            Input_Email.style.border = "1px solid red";
-            Campo_Erro_Email.innerHTML = "O campo não pode estar vazio!";
-            Campo_Erro_Email.style.display = "block";
-            event.preventDefault();
+
         }
 
-        if (ESTADO === "Selecione") {
+        if (Validacoes.Opcao_Invalida(ESTADO)) {
             Qnt_Campo_Errado++;
             Input_Estado.style.border = "1px solid red";
             Campo_Erro_Estado.innerHTML = "Selecione uma opção!";
             event.preventDefault();
         }
 
-        if (CIDADE === "Selecione") {
+        if (Validacoes.Opcao_Invalida(CIDADE)) {
             Qnt_Campo_Errado++;
             Input_Cidade.style.border = "1px solid red";
             Campo_Erro_Cidade.innerHTML = "Selecione uma opção!";
             event.preventDefault();
         }
 
-        if (ZONA === "Selecione") {
+        if (Validacoes.Opcao_Invalida(ZONA)) {
             Qnt_Campo_Errado++;
             Input_Zona.style.border = "1px solid red";
             Campo_Erro_Zona.innerHTML = "Selecione uma opção!";
             event.preventDefault();
         }
 
-        if (TELEFONE) {
-            if(TELEFONE.length != 9) {
+        if (Validacoes.Campo_Vazio(TELEFONE)) {
+            Qnt_Campo_Errado++;
+            Input_Telefone.style.border = "1px solid red";
+            Campo_Erro_Telefone.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+
+        }
+        else {
+            if(Validacoes.Telefone_Invalido(TELEFONE)) {
                 Qnt_Campo_Errado++;
                 Input_Telefone.style.border = "1px solid red";
                 Campo_Erro_Telefone.innerHTML = "Telefone invalido! Deve conter 9 digitos e apenas numeros!";
                 event.preventDefault();
             }
         }
-        else {
-            Qnt_Campo_Errado++;
-            Input_Telefone.style.border = "1px solid red";
-            Campo_Erro_Telefone.innerHTML = "O campo não pode estar vazio!";
-            event.preventDefault();
-        }
 
-        const senhaRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-        if (SENHA) {
-            if (!senhaRegex.test(SENHA)) {
+        if (Validacoes.Campo_Vazio(SENHA)) {
+            Qnt_Campo_Errado++;
+            Input_Senha.style.border = "1px solid red";
+            Campo_Erro_Senha.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+
+        }        
+        else {
+            if (Validacoes.Senha_Invalida(SENHA)) {
                 Qnt_Campo_Errado++;
                 Input_Senha.style.border = "1px solid red";  
                 Campo_Erro_Senha.innerHTML = "Senha inválida! Deve conter pelo menos 8 dígitos, 1 número e 1 caractere especial.";
                 event.preventDefault();
             } 
-        }        
-        else {
-            Qnt_Campo_Errado++;
-            Input_Senha.style.border = "1px solid red";
-            Campo_Erro_Senha.innerHTML = "O campo não pode estar vazio!";
-            event.preventDefault();
         }
 
-        if(CONFIRMACAO_SENHA){
-            if(CONFIRMACAO_SENHA != SENHA){
+        if(Validacoes.Campo_Vazio(CONFIRMACAO_SENHA)){
+            Qnt_Campo_Errado++;
+            Input_Confirmacao_de_senha.style.border = "1px solid red";
+            Campo_Erro_Confirmar_Senha.innerHTML = "O campo não pode estar vazio!";
+            event.preventDefault();
+
+        }
+        else{
+            if(Validacoes.Senhas_Incompativeis(CONFIRMACAO_SENHA, SENHA)){
                 Qnt_Campo_Errado++;
                 Input_Confirmacao_de_senha.style.border = "1px solid red";
                 Campo_Erro_Confirmar_Senha.innerHTML = "Senhas não incompatíveis!";
                 event.preventDefault();
             }
         }
-        else{
-            Qnt_Campo_Errado++;
-            Input_Confirmacao_de_senha.style.border = "1px solid red";
-            Campo_Erro_Confirmar_Senha.innerHTML = "O campo não pode estar vazio!";
-            event.preventDefault();
-        }
-        if(Qnt_Campo_Errado == 0){
+
+        if(Validacoes.Cadastro_Valido(Qnt_Campo_Errado)){
+
             fetch("/Voluntarios/cadastrar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    Nome: NOME,
-                    Email: EMAIL,
-                    Telefone: TELEFONE,
-                    Senha: SENHA,
-                    fkEstado: ESTADO,
-                    fkCidade: CIDADE,
-                    fkZona: ZONA
-                }),
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        Nome: NOME,
+                        Email: EMAIL,
+                        Telefone: TELEFONE, 
+                        Senha: SENHA,
+                        fkEstado: ESTADO,
+                        fkCidade: CIDADE,
+                        fkZona: ZONA
+                    }),
                 })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
 
-                    if (resposta.ok) {
-              
+                        if (resposta.ok) {
 
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
+                            setTimeout(() => {
+                                window.location = "login.html";
+                            }, "2000");
 
-                    } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
+                        } else {
+        
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
 
                 return false;
         }

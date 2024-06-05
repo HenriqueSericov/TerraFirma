@@ -19,8 +19,8 @@
 
 <body>
     <div class="Tela_de_Cadastro_ONG">
-        <div class="Parte_Esqueda">
-            <a href="index.html">
+        <div class="Parte_Esquerda">
+            <a href="Login_ONG.html">
                 <button class="Botao_de_retorno">
                     <i class="fas fa-arrow-left"></i>
                 </button>
@@ -95,7 +95,7 @@
                 <a href="">
                     <button class="Botao_Cadastrar" onclick="Cadastrar()">Cadastrar</button>
                 </a>
-                <a href="">
+                <a href="Login_ONG.html">
                     <button class="Botao_Entrar_ONG">Entrar como <span style="color: rgb(25, 0, 255); font-weight: bold;">ONG</span></button>
                 </a>
             </div>
@@ -119,6 +119,44 @@
         selectTipoONG.appendChild(option);
     }
 
+    function CampoVazio(Campo){
+        return !Campo
+    }
+
+    function OpcaoInvalida(Select){
+        return Select == "Selecione"
+    }
+
+    function EmailInvalido(Email){
+        return Email.indexOf('@') === -1 || Email.indexOf('.') === -1 || Email.length > 264
+        
+    }
+
+    function TelefoneInvalido(Telefone){
+        return Telefone.length != 9
+    }
+
+    function CNPJInvalido(CNPJ){
+        const cnpjRegex = /^\d{14}$/;
+        return !cnpjRegex.test(CNPJ)
+    }
+
+    function CEPInvalido(CEP){
+        return CEP.length != 9
+    }
+
+    function SenhaInvalida(Senha){
+        const senhaRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+        return !senhaRegex.test(Senha)
+    }
+
+    function SenhasIncompatíveis(ConfirmacaoSenha, Senha){
+        return ConfirmacaoSenha != Senha
+    } 
+
+    function CadastroValido(ValidacoesErradas){
+        return ValidacoesErradas == 0
+    }
 
     function Cadastrar() {
 
@@ -131,6 +169,18 @@
         const TIPO_ONG = Input_Tipo_ONG.value
         const CONFIRMACAO_SENHA= Input_Confirmacao_de_senha.value
 
+
+        const Validacoes = {
+            "Campo_Vazio": CampoVazio,
+            "Opcao_Invalida": OpcaoInvalida,
+            "Email_Invalido": EmailInvalido,
+            "Telefone_Invalido": TelefoneInvalido,
+            "Senha_Invalida": SenhaInvalida,
+            "Senhas_Incompativeis": SenhasIncompatíveis,
+            "CNPJ_Invalido": CNPJInvalido,
+            "CEP_Invalido": CEPInvalido,
+            "Cadastro_Valido": CadastroValido
+        };
 
         let Qnt_Campo_Errado = 0
 
@@ -152,115 +202,112 @@
             field.errorElement.innerHTML = "";
         });
 
-        if (!NOME_ONG) {
+        if (Validacoes.Campo_Vazio(NOME_ONG)) {
             Qnt_Campo_Errado++;
             Input_Nome_ONG.style.border = "1px solid red";
             Campo_Erro_Nome_ONG.innerHTML = "O campo não pode estar vazio!";
             event.preventDefault();
         }
 
-        const cnpjRegex = /^\d{14}$/;
-        if (CNPJ) {
-            if (!cnpjRegex.test(CNPJ)) {
-                Qnt_Campo_Errado++;
-                Input_CNPJ.style.border = "1px solid red";
-                Campo_Erro_CNPJ.innerHTML = "CNPJ Invalido! Deve conter 14 digitos e apenas numeros!";
-                event.preventDefault();
-            }
-        } else {
+
+        if (Validacoes.Campo_Vazio(CNPJ)) {
             Qnt_Campo_Errado++;
             Input_CNPJ.style.border = "1px solid red";
             Campo_Erro_CNPJ.innerHTML = "O campo não pode estar vazio!";
             event.preventDefault();
-        }
 
-
-        const senhaRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-        if (SENHA) {
-            if (!senhaRegex.test(SENHA)) {
+        } else if (Validacoes.CNPJ_Invalido(CNPJ)) {
                 Qnt_Campo_Errado++;
-                Input_Senha.style.border = "1px solid red";  
-                Campo_Errado_Senha.innerHTML = "Senha inválida! Deve conter pelo menos 8 dígitos, 1 número e 1 caractere especial.";
+                Input_CNPJ.style.border = "1px solid red";
+                Campo_Erro_CNPJ.innerHTML = "CNPJ Invalido! Deve conter 14 digitos e apenas numeros!";
                 event.preventDefault();
-            } 
         }
-        else {
+
+
+        if (Validacoes.Campo_Vazio(SENHA)) {
                 Qnt_Campo_Errado++;
                 Input_Senha.style.border = "1px solid red";
                 Campo_Errado_Senha.innerHTML = "O campo não pode estar vazio!";
                 event.preventDefault();
+        }
+        else if (Validacoes.Senha_Invalida(SENHA)) {
+                Qnt_Campo_Errado++;
+                Input_Senha.style.border = "1px solid red";  
+                Campo_Errado_Senha.innerHTML = "Senha inválida! Deve conter pelo menos 8 dígitos, 1 número e 1 caractere especial.";
+                event.preventDefault();
             }
         
-        if (TELEFONE) {
-            if(TELEFONE.length != 9) {
-                Qnt_Campo_Errado++;
-                    Input_Telefone.style.border = "1px solid red";
-                    Campo_Errado_Telefone.innerHTML = "Telefone invalido! Deve conter 9 digitos e apenas numeros!";
-                    event.preventDefault();
-            }
-        }
-        else {
+
+        if (Validacoes.Campo_Vazio(TELEFONE)) {
             Qnt_Campo_Errado++;
             Input_Telefone.style.border = "1px solid red";
             Campo_Errado_Telefone.innerHTML = "O campo não pode estar vazio!";
             event.preventDefault();
         }
+        else if(Validacoes.Telefone_Invalido(TELEFONE)) {
+                Qnt_Campo_Errado++;
+                Input_Telefone.style.border = "1px solid red";
+                Campo_Errado_Telefone.innerHTML = "Telefone invalido! Deve conter 9 digitos e apenas numeros!";
+                event.preventDefault();
+        }
 
-        if (EMAIL) {
-            if (EMAIL.indexOf('@') === -1 || EMAIL.indexOf('.') === -1 || EMAIL.length > 264) {
+
+        if (Validacoes.Campo_Vazio(EMAIL)) {
+                Qnt_Campo_Errado++;
+                Input_Email.style.border = "1px solid red";
+                Campo_Errado_Email.innerHTML = "O campo não pode estar vazio!";
+                Campo_Errado_Email.style.display = "block";
+                event.preventDefault();
+
+        } else if (Validacoes.Email_Invalido(EMAIL)) {
                 Qnt_Campo_Errado++;
                 Input_Email.style.border = "1px solid red";
                 Campo_Errado_Email.innerHTML = "E-mail inválido! Deve conter '@', '.' e deve ser menor que 264 caracteres";
                 Campo_Errado_Email.style.display = "block";
                 event.preventDefault();
             }
-        } else {
-            Qnt_Campo_Errado++;
-            Input_Email.style.border = "1px solid red";
-            Campo_Errado_Email.innerHTML = "O campo não pode estar vazio!";
-            Campo_Errado_Email.style.display = "block";
-            event.preventDefault();
-        }
 
-        if (TIPO_ONG === "Selecione") {
+
+        if (Validacoes.Opcao_Invalida(TIPO_ONG)) {
             Qnt_Campo_Errado++;
             Input_Tipo_ONG.style.border = "1px solid red";
             Campo_Errado_Tipo_ONG.innerHTML = "Selecione uma opção!";
             event.preventDefault();
         }
 
-        if (CEP) {
-            if (CEP.length != 9) {
+
+        if (Validacoes.Campo_Vazio(CEP)) {
+            Qnt_Campo_Errado++;
+            Input_CEP.style.border = "1px solid red";
+            Campo_Errado_CEP.innerHTML = "O campo não pode estar vazio!";
+            Campo_Errado_CEP.style.display = "block";
+            event.preventDefault();
+
+        } else if (Validacoes.CEP_Invalido(CEP)) {
                 Qnt_Campo_Errado++;
                 Input_CEP.style.border = "1px solid red";
                 Campo_Errado_CEP.innerHTML = "CEP inválido! Deve seguir o formato: XXXXX-XXX";
                 Campo_Errado_CEP.style.display = "block";
                 event.preventDefault();
             }
-        } else {
-            Qnt_Campo_Errado++;
-            Input_CEP.style.border = "1px solid red";
-            Campo_Errado_CEP.innerHTML = "O campo não pode estar vazio!";
-            Campo_Errado_CEP.style.display = "block";
-            event.preventDefault();
-        }
 
-        if(CONFIRMACAO_SENHA){
-            if(CONFIRMACAO_SENHA != SENHA){
-                Qnt_Campo_Errado++;
-                Input_Confirmacao_de_senha.style.border = "1px solid red";
-                Campo_Errado_Confirmar_Senha.innerHTML = "Senhas não incompatíveis!";
-                event.preventDefault();
-            }
-        }
-        else{
+
+        if(Validacoes.Campo_Vazio(CONFIRMACAO_SENHA)){
             Qnt_Campo_Errado++;
             Input_Confirmacao_de_senha.style.border = "1px solid red";
             Campo_Errado_Confirmar_Senha.innerHTML = "O campo não pode estar vazio!";
             event.preventDefault();
         }
+        else if(Validacoes.Senhas_Incompativeis(CONFIRMACAO_SENHA, SENHA)){
+                Qnt_Campo_Errado++;
+                Input_Confirmacao_de_senha.style.border = "1px solid red";
+                Campo_Errado_Confirmar_Senha.innerHTML = "Senhas não incompatíveis!";
+                event.preventDefault();
+            }
 
-        if(Qnt_Campo_Errado == 0){
+
+
+        if(Validacoes.Cadastro_Valido(Qnt_Campo_Errado)){
             fetch("/ONGs/cadastrar", {
                 method: "POST",
                 headers: {

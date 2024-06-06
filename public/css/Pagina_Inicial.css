@@ -284,10 +284,16 @@ input::placeholder {
 .ODSs{
     /* Tamanho */
     width: 100%;
+    height: 40%;
 
     /* Organização dos elementos filhos */
     display: flex;
+    align-items: center;
     justify-content: space-around;
+}
+
+.Imagem_ODS:hover{
+    height: 235px;
 }
 
 .Sessao_Categorias_de_vagas{
@@ -318,11 +324,19 @@ input::placeholder {
 .Tipos_Categoria{
     /* Tamanho */
     width: 100%;
+    height: 100%;
 
     /* Organização dos elementos filhos */
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.Img_Categoria:hover{
+    height: 215px;
+    transition: 0.5s;
 }
 
 .Botao_Ver_mais{

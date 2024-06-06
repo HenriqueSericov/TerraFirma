@@ -12,4 +12,8 @@ router.get("/listar", function (req, res) {
     VoluntarioController.listar(req, res);
 });
 
+router.post("/autenticar", function (req, res) {
+    VoluntarioController.autenticar(req, res);
+});
+
 module.exports = router;

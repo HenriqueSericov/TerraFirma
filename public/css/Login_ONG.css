@@ -133,7 +133,7 @@ select option {
 }
 
 .Botões{
-    height: 30%;
+    height: 32%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -165,4 +165,11 @@ select option {
     background: none repeat scroll;
     font-weight: 700;
     cursor: pointer;
+}
+
+.Login_Invalido{
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 15px;
 }

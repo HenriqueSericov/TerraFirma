@@ -13,4 +13,8 @@ router.get("/listar", function (req, res) {
     ONGController.listar(req, res);
 });
 
+router.post("/autenticar", function (req, res) {
+    ONGController.autenticar(req, res);
+});
+
 module.exports = router;

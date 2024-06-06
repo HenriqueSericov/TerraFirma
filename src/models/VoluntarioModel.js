@@ -1,5 +1,13 @@
 var database = require("../database/config")
 
+function autenticar(Email, Senha) {
+    var instrucaoSql = `
+        SELECT IdVoluntario, Nome, Email, fkEstado, fkCidade, fkZona  FROM Voluntario WHERE Email = '${Email}' AND Senha = '${Senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function listar() {
     var instrucao = `
         SELECT * FROM carro;
@@ -22,5 +30,6 @@ function cadastrar(Nome, Email, Telefone, Senha, fkEstado, fkCidade, fkZona) {
 
 module.exports = {
     listar,
-    cadastrar
+    cadastrar,
+    autenticar
 };

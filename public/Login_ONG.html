@@ -38,11 +38,12 @@
 
                 <div class="Conjunto_Input">
                     <p class="Nome_Input">Senha</p>
-                    <input type="text" id="Input_Senha" class="Input" placeholder="Senha">
+                    <input type="password" id="Input_Senha" class="Input" placeholder="Senha">
                     <p class="Campo_Invalido" id="Campo_Erro_Senha"></p>
                 </div>
 
             <div class="Botões">
+                <p class="Login_Invalido" id="Login_Invalido"></p>
                 <a href="">
                     <button class="Botao_Entrar" onclick="Entrar()"> Entrar</button>
                 </a>
@@ -112,7 +113,57 @@
         }
 
         if(LoginValido(Qnt_Campo_Errado)){
-            // VALIDACAO AQUI !!!!
+            event.preventDefault();
+
+            fetch("/ONGs/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: EMAIL,
+                senhaServer: SENHA
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.ID_ONG = json.IdONG;
+                    sessionStorage.NOME_ONG = json.Nome;
+                    sessionStorage.EMAIL_ONG = json.Email;
+                    sessionStorage.TELEFONE_ONG = json.Telefone;
+                    sessionStorage.TIPO_ONG = json.fkTipoONG;
+
+                    setTimeout(function () {
+                        window.location = "/Tela_Voluntario.html";
+                    }, 500);
+
+                });
+
+            } else {
+
+                Login_Invalido.innerHTML = "Não encontramos sua conta... Verifique as informações e tente novamente"
+
+                setTimeout(function () {
+                    Login_Invalido.innerHTML = "";
+                    }, 4000);
+
+
+                resposta.text().then(texto => {
+                    console.error(texto);;
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
         }
 
     }

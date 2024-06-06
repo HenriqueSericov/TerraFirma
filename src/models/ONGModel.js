@@ -1,5 +1,14 @@
 var database = require("../database/config")
 
+function autenticar(Email, Senha) {
+    console.log("Model ONG")
+    var instrucaoSql = `
+        SELECT IdONG, Nome, Email, Telefone, fkTipoONG  FROM ONG WHERE Email = '${Email}' AND Senha = '${Senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function listar() {
     var instrucao = `
         SELECT * FROM carro;
@@ -17,4 +26,4 @@ function cadastrar(NomeONG, CNPJ, CEP, Senha, Telefone, Email, TipoONG) {
     return database.executar(instrucao);
 }
 
-module.exports = { cadastrar, listar };
+module.exports = { cadastrar, listar, autenticar };

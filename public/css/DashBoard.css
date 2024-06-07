@@ -1,0 +1,165 @@
+*{
+        /*espaçamento*/
+        margin: 0px;
+        padding: 0px;
+}
+
+body{
+        /*tamanho*/
+        width: 100%;
+        height: 90vh;
+        /*organização de elementos filhos*/ 
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        overflow: hidden;
+}
+
+.menu{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 13%;
+        border-bottom: 2px solid black
+}
+
+
+.Botao_Menu{
+        height: 100%;
+        width: 100%;
+        border: none;
+        background: none;
+        cursor: pointer;
+}
+
+
+.Icone_Menu{
+        height: 50%;
+        width: 100%;
+}
+
+.Icone_Menu:hover{
+        height: 60%;
+        width: 100%;
+}
+
+.Sessao_Titulo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 95%;
+}
+
+.Titulo_DashBoard{
+        font-size: 30px;
+        font-weight: bold;
+}
+
+.Conteudo_DashBoard{
+        height: 100%;
+        width: 100%;
+}
+
+.Sessao_Acoes{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 33%;
+        border: 2px solid red;
+        align-items: center;
+}
+
+.Titulo_Total_Voluntarios{
+        font-size: 17px;
+        text-align: center;
+        font-weight: bold;
+}
+
+.KPI{
+        border: 2px solid red;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 65%;
+        height: 25%;
+}
+
+.Caixa_KPI {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid rgb(0, 0, 0);
+        height: 80%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Aqui está o box shadow */
+    }
+    
+.Valor_KPI{
+        font-size: 45px;
+        font-weight: bold;
+}
+
+.Caixa_Acoes{
+        width: 50%;
+        height: 50%;
+        /* max-height: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word; */
+        border: 3px solid black;
+        border-radius: 20px;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-around;
+}
+
+.Card{  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 20%;
+        width: 80%;
+        border: 2px solid red;
+}
+
+/* Altera a barra de rolagem */
+/* Webkit (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+        width: 10px; /* Largura da barra de rolagem */
+
+    }
+    
+    /* Track (fundo da barra de rolagem) */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Cor de fundo */
+    }
+    
+    /* Thumb (a parte da barra de rolagem que você arrasta) */
+    ::-webkit-scrollbar-thumb {
+        background: #888; /* Cor do botão da barra de rolagem */
+    }
+    
+    /* Thumb on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Cor do botão da barra de rolagem quando o mouse passa por cima */
+    }
+
+.Botao_add_acao{
+        height: 10%;
+        width: 15%;
+        border: none;
+        background: none;
+}
+
+.Icone_add_acao{
+        height: 100%;
+}
+
+.Icone_add_acao:hover{
+        height: 110%;
+}

@@ -9,9 +9,31 @@ function autenticar(Email, Senha) {
     return database.executar(instrucaoSql);
 }
 
-function listar() {
+function Buscar_Total_Voluntarios(fkONG) {
     var instrucao = `
-        SELECT * FROM carro;
+    SELECT 
+        count(fkVoluntario) AS Total_Voluntarios
+    FROM 
+        Participacao
+    JOIN
+        Acao
+    ON
+        fkONG = IdAcao
+    WHERE
+        fkONG = '${fkONG}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function Buscar_Acoes(fkONG) {
+    var instrucao = `
+    SELECT 
+        Nome AS Nome_da_Acao, DataAcao AS Data_da_Acao, IdAcao
+    FROM 
+        Acao
+    WHERE
+        fkONG = '${fkONG}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -26,4 +48,13 @@ function cadastrar(NomeONG, CNPJ, CEP, Senha, Telefone, Email, TipoONG) {
     return database.executar(instrucao);
 }
 
-module.exports = { cadastrar, listar, autenticar };
+function cadastrar_Acao(NomeAcao, Categoria, Estado, Cidade, Zona, Endereco, Data, Url, Descricao, fkONG) {
+    var instrucao = `
+        INSERT INTO Acao (Nome, Descricao, DataAcao, Endereco, URLImagem, fkONG, fkEstado, fkCidade, fkZona, fkCategoria) VALUES ('${NomeAcao}', '${Descricao}', '${Data}', '${Endereco}', '${Url}', '${fkONG}', '${Estado}', '${Cidade}', '${Zona}', '${Categoria}');
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+module.exports = { cadastrar, autenticar, cadastrar_Acao, Buscar_Total_Voluntarios, Buscar_Acoes};

@@ -45,8 +45,19 @@ function autenticar(req, res) {
     }
 
 }
-function listar(req, res) {
-    ONGModel.listar().then(function(resultado){
+function Buscar_Total_Voluntarios(req, res) {
+    var fkONG = req.body.fkONG;
+    ONGModel.Buscar_Total_Voluntarios(fkONG).then(function(resultado){
+        // precisamos informar que o resultado voltará para o front-end como uma resposta em json
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
+function Buscar_Acoes(req, res) {
+    var fkONG = req.body.fkONG;
+    ONGModel.Buscar_Acoes(fkONG).then(function(resultado){
         // precisamos informar que o resultado voltará para o front-end como uma resposta em json
         res.status(200).json(resultado);
     }).catch(function(erro){
@@ -98,8 +109,63 @@ function cadastrar(req, res) {
     }
     }
 
+    function cadastrar_Acao(req, res) {
+        var NomeAcao = req.body.NomeAcao;
+        var Categoria = req.body.Categoria;
+        var Estado = req.body.Estado;
+        var Cidade = req.body.Cidade;
+        var Zona = req.body.Zona;
+        var Endereco = req.body.Endereco;
+        var Data = req.body.Data;
+        var Url = req.body.Url;
+        var Descricao = req.body.Descricao;
+        var fkONG = req.body.fkONG;
+    
+        if (NomeAcao == undefined) {
+            res.status(400).send("Seu NomeAcao está undefined!");
+        }else if(Categoria == undefined){
+            res.status(400).send("Sua Categoria está undefined!");        
+        }else if(Estado == undefined){
+            res.status(400).send("Seu Estado está undefined!");        
+        }else if(Cidade == undefined){
+            res.status(400).send("Sua Cidade está undefined!");        
+        }else if(Zona == undefined){
+            res.status(400).send("Sua Zona está undefined!");        
+        }else if(Endereco == undefined){
+            res.status(400).send("Seu Endereco está undefined!");        
+        }else if(Data == undefined){
+            res.status(400).send("Sua Data está undefined!");        
+        }else if(Url == undefined){
+            res.status(400).send("Seu Url está undefined!");        
+        }else if(Descricao == undefined){
+            res.status(400).send("Sua Descricao está undefined!");        
+        }else if(fkONG == undefined){
+            res.status(400).send("Seu fkONG está undefined!");        
+        }
+        
+        else {
+    
+            ONGModel.cadastrar_Acao(NomeAcao, Categoria, Estado, Cidade, Zona, Endereco, Data, Url, Descricao, fkONG)
+                .then(
+                    function (resultado) {
+                        res.json(resultado);
+                    }
+                ).catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log(
+                            "\nHouve um erro ao realizar o cadastro! Erro: ",
+                            erro.sqlMessage
+                        );
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
+        }
+        }
 module.exports = {
-    listar,
     cadastrar,
-    autenticar
+    autenticar,
+    cadastrar_Acao,
+    Buscar_Total_Voluntarios,
+    Buscar_Acoes
 }

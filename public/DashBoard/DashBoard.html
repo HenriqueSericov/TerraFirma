@@ -10,14 +10,92 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <link rel="stylesheet" href="../css/DashBoard.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-        <header class="menu">
-                <a href="">
-                        <button class="Botao_Menu">
-                                <img src="../assets/imgs/Menu.png" alt="" class="Icone_Menu">
+<body >  
+        <div class="Formulario_Nova_Acao" id="Formulario_Nova_Acao">
+                <div class="Conteudo_Titulo">
+                        <button class="Botao_Fechar" onclick="Fechar_Nova_Acao()">
+                                <img src="../assets/imgs/Icone_Fechar.png" alt="Icone_Fechar" class="Icone_Fechar">
                         </button>
-                </a>
+                        <h1 class="Titulo_Formulario">Registre uma nova ação</h1>
+                        <div>
+
+                        </div>
+                </div>
+                <div class="Conteudo_Formulario">
+                        <div class="Inputs">
+                                <div class="Inputs_Direita">
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Nome Ação</p>
+                                                <input type="text" class="Input" placeholder="Exemplo: União Solidaria" id="Input_Nome_Acao">
+                                                <p class="Campo_Invalido" id="Campo_Erro_Nome_Acao"></p>
+                                        </div>
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Categoria</p>
+                                                <select id="Input_Categoria" class="Input">
+                                                        <option value="Selecione">Selecione uma Opção</option>
+                                                </select>
+                                                <p class="Campo_Invalido" id="Campo_Erro_Categoria"></p>
+                                        </div>
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Estado</p>
+                                                <select id="Input_Estado" class="Input">
+                                                        <option value="Selecione">Selecione uma Opção</option>
+                                                </select>
+                                                <p class="Campo_Invalido" id="Campo_Erro_Estado"></p>
+                                        </div>
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Cidade</p>
+                                                <select id="Input_Cidade" class="Input">
+                                                        <option value="Selecione">Selecione uma Opção</option>
+                                                </select>
+                                                <p class="Campo_Invalido" id="Campo_Erro_Cidade"></p>
+                                        </div>
+                                </div>
+                                <div class="Inputs_Esquerda">
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Zona</p>
+                                                <select id="Input_Zona" class="Input">
+                                                        <option value="Selecione">Zona</option>
+                                                </select>
+                                                <p class="Campo_Invalido" id="Campo_Erro_Zona"></p>
+                                        </div>
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Endereço</p>
+                                                <input id="Input_Endereco" class="Input" placeholder="Exemplo: Rua Exemplo Numero 39">
+                                                <p class="Campo_Invalido" id="Campo_Erro_Endereco"></p>
+                                        </div>
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Data</p>
+                                                <input id="Input_Data" type="date" class="Input">
+                                                <p class="Campo_Invalido" id="Campo_Erro_Data"></p>
+                                        </div>
+                                        <div class="conjunto_input">
+                                                <p class="Nome_Input">Imagem da Ação</p>
+                                                <input id="Input_URL" type="text" class="Input" placeholder="Exemplo: Https://Imagem.com">
+                                                <p class="Campo_Invalido" id="Campo_Erro_URL"></p>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="Descricao">
+                                <h1 class="Titulo_Descricao">Descrição</h1>
+                                <textarea id="Input_Descricao" class="Input_Descricao" placeholder="No maximo 100 caracters"></textarea>
+                                <center><p class="Campo_Invalido" id="Campo_Erro_Descricao" style="font-size: 15px;"></p></center>
+                                <button class="Botao_Registrar" onclick="Cadastrar_Nova_Acao()">Registrar</button>
+                        </div>
+
+                </div>
+
+        </div>
+        <header class="menu">
+                <section class="Sessao_Menu">
+                        <a href="">
+                                <button class="Botao_Menu">
+                                        <img src="../assets/imgs/Menu.png" alt="" class="Icone_Menu">
+                                </button>
+                        </a>
+                </section>
                 <section class="Sessao_Titulo">
                         <h1 class="Titulo_DashBoard">DashBoard ONG [Nome]</h1>
                 </section>
@@ -27,31 +105,470 @@
                         <div class="KPI">
                                 <h4 class="Titulo_Total_Voluntarios">Total de Voluntarios em suas ações</h4>
                                 <div class="Caixa_KPI">
-                                        <p class="Valor_KPI">
-                                        15
+                                        <p class="Valor_KPI" id="Valor_KPI">
+
                                         </p>
                                 </div>
                         </div>
-                        <div class="Caixa_Acoes">
-                                <div class="Card">
-                                        <h5>Nome Acao</h5>
-                                        <p>xx/xx/xxxx</p>
-                                </div>
-                                <div class="Card">
-                                        <h5>Nome Acao</h5>
-                                        <p>xx/xx/xxxx</p>
-                                </div>
-                                <div class="Card">
-                                        <h5>Nome Acao</h5>
-                                        <p>xx/xx/xxxx</p>
-                                </div>
-                                
-                                
+                        <div class="Caixa_Acoes" id="Caixa_Acoes">
+                                <h1 class="Titulo_Acoes">Suas Ações</h1>
+
                         </div>
-                        <button class="Botao_add_acao">
-                                <img src="/public/assets/imgs/Icone_add_acao.png" alt="" class="Icone_add_acao">
+                        <button class="Botao_add_acao" onclick="Nova_Acao()">
+                                <img src="../assets/imgs/Icone_Adicionar_Acao.png" alt="" class="Icone_add_acao">
                         </button>
+                </div>
+                <div class="Sessao_Grafico_de_Barras">
+                        <h1 class="Titulo_Grafico_de_Barras">Ações com mais voluntarios</h1>
+                        <div class="Area_Grafico_de_Barras">
+                                <canvas id="Grafico_Barras" class="Grafico_de_Barras"></canvas>
+                        </div>
+                </div>
+                <div class="Sessao_Grafico_de_Pizza">
+                        <div class="Area_Grafico_de_Pizza">
+                                <canvas id="Grafico_Pizza" class="Grafico_de_Pizza"></canvas>
+                        </div>
+                        <div class="Tipos_Categoria">
+                                <img class="Img_Categoria" src="../assets/imgs/Legenda_Alimento.png" alt="ODS Alimento">
+
+                                <img class="Img_Categoria" src="../assets/imgs/Legenda_Serviços.png" alt="ODS Limpeza">
+
+                                <img class="Img_Categoria" src="../assets/imgs/Legenda_Educação.png" alt="ODS Educação">
+
+                                <img class="Img_Categoria" src="../assets/imgs/Legenda_Animais.png" alt="ODS Animais">
+
+                                <img class="Img_Categoria" src="../assets/imgs/Legenda_Saude.png" alt="ODS Saude">
+
+                                <img class="Img_Categoria" src="../assets/imgs/Legenda_Recreação.png" alt="ODS Recreação">
+                                <button onclick="Buscar_Acoes()">TESTE</button>
+                        </div>
                 </div>
         </section>
 </body>
 </html>
+<script>
+        setTimeout(() => {
+                Buscar_Total_Participantes(),
+                Buscar_Acoes(),
+                Plotar_Grafico_Barras()
+        });
+
+        function Atualiza_Dados() {
+                Buscar_Total_Participantes();
+                Buscar_Acoes();
+        }
+
+        const intervalo = 20000; 
+
+        // Chamando as funções a cada intervalo de tempo
+        setInterval(Atualiza_Dados, intervalo);
+
+    const Estados = [
+        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
+        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
+        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
+        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
+        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+    ];
+
+    const selectEstados = Input_Estado;
+
+    for (let Posicao = 0; Posicao < Estados.length; Posicao++) {
+        const option = document.createElement('option');
+        option.text = Estados[Posicao];
+        option.value = Posicao+1;
+        selectEstados.appendChild(option);
+    }
+
+    const cidades = [
+        "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
+        "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
+        "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
+    ];
+
+    const Categorias = [
+    'Alimento', 'Serviços', 'Educação', 'Animais', 'Saude', 'Recreação'
+
+    ];
+    const selectCategorias = Input_Categoria;
+
+    for (let Posicao = 0; Posicao < Categorias.length; Posicao++) {
+        const option = document.createElement('option');
+        option.text = Categorias[Posicao];
+        option.value = Posicao+1;
+        selectCategorias.appendChild(option);
+    }
+
+
+    const selectCidades = Input_Cidade;
+
+    for (let Posicao = 0; Posicao < cidades.length; Posicao++) {
+        const option = document.createElement('option');
+        option.text = cidades[Posicao];
+        option.value = Posicao+1;
+        selectCidades.appendChild(option);
+    }
+
+    const Zonas = ["Zona Sul", "Zona Norte", "Zona Leste", "Zona Oeste", "Centro"];
+
+    const selectZona = Input_Zona;
+
+    for (let Posicao = 0; Posicao < Zonas.length; Posicao++) {
+        const option = document.createElement('option');
+        option.text = Zonas[Posicao];
+        option.value = Posicao+1;
+        selectZona.appendChild(option);
+    }
+
+
+        function Nova_Acao(){
+                Formulario_Nova_Acao.style.display = "Block";
+        }
+
+        function Fechar_Nova_Acao(){
+                Formulario_Nova_Acao.style.display = "None";
+        }
+
+        function CampoVazio(Campo){
+                return !Campo
+        }
+
+        function OpcaoInvalida(Select){
+                return Select == "Selecione"
+        }
+
+        function CampoMuitoGrande(Campo, Tamanho_Max){
+                return Campo.length > Tamanho_Max
+        }
+
+        const ID_ONG = sessionStorage.ID_ONG
+
+        function Cadastrar_Nova_Acao(){
+                const NOME_ACAO = Input_Nome_Acao.value;
+                const CATEGORIA = Input_Categoria.value;
+                const ESTADO = Input_Estado.value;
+                const CIDADE = Input_Cidade.value;
+                const ZONA = Input_Zona.value;
+                const ENDERECO = Input_Endereco.value;
+                const DATA = Input_Data.value;
+                const URL = Input_URL.value;
+                const DESCRICAO = Input_Descricao.value
+
+                let Qnt_Campo_Errado = 0
+
+
+                const Validacoes = {
+                        "Campo_Vazio": CampoVazio,
+                        "Opcao_Invalida": OpcaoInvalida,
+                        "Campo_Grande_Demais" : CampoMuitoGrande
+                };
+
+                // Reseta o estilo dos campos
+                const fields = [
+                { element: Input_Nome_Acao, errorElement: Campo_Erro_Nome_Acao },
+                { element: Input_Categoria, errorElement: Campo_Erro_Categoria },
+                { element: Input_Estado, errorElement: Campo_Erro_Estado},
+                { element: Input_Cidade, errorElement: Campo_Erro_Cidade },
+                { element: Input_Zona, errorElement: Campo_Erro_Zona },
+                { element: Input_Endereco, errorElement: Campo_Erro_Endereco },
+                { element: Input_Data, errorElement: Campo_Erro_Data },
+                { element: Input_URL, errorElement: Campo_Erro_URL },
+                { element: Input_Descricao, errorElement: Campo_Erro_Descricao }
+                ];
+
+                fields.forEach(field => {
+                field.element.style.border = "";
+                field.errorElement.innerHTML = "";
+                });
+
+                if(Validacoes.Campo_Vazio(NOME_ACAO)){
+                        Qnt_Campo_Errado++;
+                        Input_Nome_Acao.style.border = "1px solid red";
+                        Campo_Erro_Nome_Acao.innerHTML = "O campo não pode estar vazio!";
+                        event.preventDefault();
+                }
+                else if(Validacoes.Campo_Grande_Demais(NOME_ACAO, 50)){
+                        Qnt_Campo_Errado++;
+                        Input_Nome_Acao.style.border = "1px solid red";
+                        Campo_Erro_Nome_Acao.innerHTML = "O campo não pode ser maior que 50 caracteres!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Opcao_Invalida(CATEGORIA)){
+                        Qnt_Campo_Errado++;
+                        Input_Categoria.style.border = "1px solid red";
+                        Campo_Erro_Categoria.innerHTML = "Selecione uma opção!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Opcao_Invalida(ESTADO)){
+                        Qnt_Campo_Errado++;
+                        Input_Estado.style.border = "1px solid red";
+                        Campo_Erro_Estado.innerHTML = "Selecione uma opção!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Opcao_Invalida(CIDADE)){
+                        Qnt_Campo_Errado++;
+                        Input_Cidade.style.border = "1px solid red";
+                        Campo_Erro_Cidade.innerHTML = "Selecione uma opção!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Opcao_Invalida(ZONA)){
+                        Qnt_Campo_Errado++;
+                        Input_Zona.style.border = "1px solid red";
+                        Campo_Erro_Zona.innerHTML = "Selecione uma opção!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Campo_Vazio(ENDERECO)){
+                        Qnt_Campo_Errado++;
+                        Input_Endereco.style.border = "1px solid red";
+                        Campo_Erro_Endereco.innerHTML = "O campo não pode estar vazio!";
+                        event.preventDefault();
+                }
+                else if(Validacoes.Campo_Grande_Demais(ENDERECO, 80)){
+                        Qnt_Campo_Errado++;
+                        Input_Endereco.style.border = "1px solid red";
+                        Campo_Erro_Endereco.innerHTML = "O campo não pode ser maior que 80 caracteres!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Campo_Vazio(DATA)){
+                        Qnt_Campo_Errado++;
+                        Input_Data.style.border = "1px solid red";
+                        Campo_Erro_Data.innerHTML = "O campo não pode estar vazio!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Campo_Vazio(URL)){
+                        Qnt_Campo_Errado++;
+                        Input_URL.style.border = "1px solid red";
+                        Campo_Erro_URL.innerHTML = "O campo não pode estar vazio!";
+                        event.preventDefault();
+                }
+
+                else if(Validacoes.Campo_Grande_Demais(URL, 300)){
+                        Qnt_Campo_Errado++;
+                        Input_URL.style.border = "1px solid red";
+                        Campo_Erro_URL.innerHTML = "O campo não pode ser maior que 300 caracteres!";
+                        event.preventDefault();
+                }
+
+                if(Validacoes.Campo_Vazio(DESCRICAO)){
+                        Qnt_Campo_Errado++;
+                        Input_Descricao.style.border = "1px solid red";
+                        Campo_Erro_Descricao.innerHTML = "O campo não pode estar vazio!";
+                        event.preventDefault();
+                }
+                else if(Validacoes.Campo_Grande_Demais(DESCRICAO, 100)){
+                        Qnt_Campo_Errado++;
+                        Input_Descricao.style.border = "1px solid red";
+                        Campo_Erro_Descricao.innerHTML = "O campo não pode ser maior que 100 caracteres!";
+                        event.preventDefault();
+                }
+
+                if(Qnt_Campo_Errado == 0){
+                        event.preventDefault();
+
+                        fetch("/ONGs/cadastrar_Acao", {
+                                method: "POST",
+                                headers: {
+                                "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                // crie um atributo que recebe o valor recuperado aqui
+                                // Agora vá para o arquivo routes/usuario.js
+                                NomeAcao: NOME_ACAO,
+                                Categoria: CATEGORIA,
+                                Estado: ESTADO,
+                                Cidade: CIDADE,
+                                Zona: ZONA,
+                                Endereco: ENDERECO,
+                                Data: DATA,
+                                Url: URL,
+                                Descricao: DESCRICAO,
+                                fkONG: ID_ONG
+                                }),
+                        })
+                                .then(function (resposta) {
+                                        console.log("resposta: ", resposta);
+
+                                        if (resposta.ok) {
+                                        
+                                        Campo_Erro_Descricao.style.color = "Green";
+                                        Campo_Erro_Descricao.innerHTML = "Ação Cadastrada com sucesso"
+                                        setTimeout(() => {
+                                                Campo_Erro_Descricao.innerHTML = "";
+                                        }, 2500);
+
+                                        } else {
+                                        console.log("Erro ao cadastrar ação")
+                                        }
+                                })
+                                .catch(function (resposta) {
+                                        console.log(`#ERRO: ${resposta}`);
+                                });
+
+                        return false;
+
+                }
+        }
+
+        function Buscar_Total_Participantes(){
+                fetch("/ONGs/Buscar_Total_Voluntarios", {
+                method: "POST",
+                headers: {
+                        "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                        fkONG: ID_ONG
+                })
+                }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO BUSCAR KPI()!")
+
+                if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        Valor_KPI.innerHTML = json[0].Total_Voluntarios;
+
+                        });
+
+                } else {
+                        resposta.text().then(texto => {
+                        console.error(texto);;
+                        });
+                }
+
+                }).catch(function (erro) {
+                console.log(erro);
+                })
+
+                return false;
+        }
+
+        function Buscar_Acoes(){
+                Caixa_Acoes.innerHTML = `<h1 class="Titulo_Acoes">Suas Ações</h1>`
+
+                fetch("/ONGs/Buscar_Acoes", {
+                method: "POST",
+                headers: {
+                        "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                        fkONG: ID_ONG
+                })
+                }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO BUSCAR ACOES!")
+
+                if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        for(let Posicao = 0; Posicao < json.length; Posicao++){
+                                const Nome_da_Acao = json[Posicao].Nome_da_Acao;
+                                const Data_da_Acao = json[Posicao].Data_da_Acao;
+                                const Data_Formatada = Data_da_Acao.split("T")[0];
+
+                                Caixa_Acoes.innerHTML += `
+                                                <div class="Card">
+                                                        <h5 class="Nome_Acao">${Nome_da_Acao}</h5>
+                                                        <p class="Data_Acao">${Data_Formatada}</p>
+                                                </div>  
+                                                `
+                        }
+
+                        });
+
+                } else {
+                        resposta.text().then(texto => {
+                        console.error(texto);;
+                        });
+                }
+
+                }).catch(function (erro) {
+                console.log(erro);
+                })
+
+                return false;
+        }
+
+        function Plotar_Grafico_Barras(){
+                (async function() {
+                        const data = [
+                        { year: 2010, count: 10 },      
+                        { year: 2011, count: 20 },
+                        { year: 2012, count: 15 },
+                        { year: 2013, count: 25 },
+                        { year: 2014, count: 22 },
+                        { year: 2015, count: 30 },
+                        { year: 2016, count: 60 },
+                        
+                        ];
+
+                        new Chart(
+                        document.getElementById('Grafico_Barras'),
+                        {
+                        type: 'bar',
+                        data: {
+                                labels: data.map(row => row.year),
+                                datasets: [
+                                {
+                                label: 'Acquisitions by year',
+                                data: data.map(row => row.count)
+                                }
+                                ]
+                        },
+                        options: {
+                                responsive: true, // Define o gráfico como responsivo
+                                maintainAspectRatio: false, // Permite que o gráfico se ajuste à altura e largura do contêiner
+                                scales: {
+                                        y: {
+                                        beginAtZero: true
+                                        }
+                                }
+                                }
+                        }
+                        );
+                        })();
+        }
+
+
+                (async function() {
+                const data = [
+                { year: 2010, count: 10 },
+                { year: 2011, count: 20 },
+                { year: 2012, count: 15 },
+                { year: 2013, count: 25 },
+                { year: 2014, count: 22 },
+                { year: 2015, count: 30 },
+                { year: 2016, count: 60 },
+                { year: 2016, count: 60 }
+                ];
+
+                new Chart(
+                document.getElementById('Grafico_Pizza'),
+                {
+                type: 'doughnut',
+                data: {
+                        labels: data.map(row => row.year),
+                        datasets: [
+                        {
+                        label: 'Acquisitions by year',
+                        data: data.map(row => row.count)
+                        }
+                        ]
+                }
+                }
+                );
+                })();
+</script>

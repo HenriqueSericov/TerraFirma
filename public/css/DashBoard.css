@@ -21,10 +21,16 @@ body{
         border-bottom: 2px solid black
 }
 
+.Sessao_Menu{
+        width: 5%;
+}
 
 .Botao_Menu{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
-        width: 100%;
+        width: 90%;
         border: none;
         background: none;
         cursor: pointer;
@@ -33,12 +39,12 @@ body{
 
 .Icone_Menu{
         height: 50%;
-        width: 100%;
+        width: 80%;
 }
 
 .Icone_Menu:hover{
         height: 60%;
-        width: 100%;
+        width: 90%;
 }
 
 .Sessao_Titulo{
@@ -54,17 +60,19 @@ body{
 }
 
 .Conteudo_DashBoard{
+        display: flex;
+        flex-direction: row;
         height: 100%;
         width: 100%;
 }
 
 .Sessao_Acoes{
+
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         height: 100%;
         width: 33%;
-        border: 2px solid red;
         align-items: center;
 }
 
@@ -75,12 +83,12 @@ body{
 }
 
 .KPI{
-        border: 2px solid red;
-        width: 100%;
         display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
-        justify-content: space-between;
-        width: 65%;
+        justify-content: space-around;
+        width: 75%;
         height: 25%;
 }
 
@@ -89,7 +97,8 @@ body{
         justify-content: center;
         align-items: center;
         border: 3px solid rgb(0, 0, 0);
-        height: 80%;
+        width: 80%;
+        height: 65%;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Aqui está o box shadow */
     }
@@ -99,32 +108,48 @@ body{
         font-weight: bold;
 }
 
-.Caixa_Acoes{
-        width: 50%;
-        height: 50%;
-        /* max-height: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-wrap: break-word; */
+.Caixa_Acoes {
+        width: 60%;
+        height: 55%;
         border: 3px solid black;
         border-radius: 20px;
-        overflow-y: scroll;
-        display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         justify-content: space-around;
+        overflow-y: scroll;
+        max-height: 80%;
+    }
+    
+
+.Titulo_Acoes{
+        width: 100%;
+        text-align: center;
+        height: 20%;
+        font-size: 32px;
+        font-weight: bold;
 }
 
 .Card{  
+        margin-bottom: 20px;
+        margin-left: 15%;
         display: flex;
         align-items: center;
         justify-content: center;
         justify-content: space-evenly;
         flex-direction: column;
-        height: 20%;
-        width: 80%;
-        border: 2px solid red;
+        height: 18%;
+        width: 70%;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 10px;
+        background-color: #D9D9D9;
+}
+
+.Nome_Acao{
+        font-size: 20px;
+}
+
+.Data_Acao{
+        font-size: 10px;
 }
 
 /* Altera a barra de rolagem */
@@ -151,15 +176,227 @@ body{
 
 .Botao_add_acao{
         height: 10%;
-        width: 15%;
+        width: 10%;     
         border: none;
         background: none;
 }
 
 .Icone_add_acao{
-        height: 100%;
+        height: 70%;
 }
 
 .Icone_add_acao:hover{
-        height: 110%;
+        height: 80%;
+}
+
+
+.Formulario_Nova_Acao{
+        border: 3px solid #000;
+        background-color: #ffffff;
+        border-radius: 10px;
+        width: 60%;
+        height: 85%;
+        position: absolute;
+        margin-left: 20%;
+        margin-top: 5%;
+        display: none;
+}
+
+
+.Conteudo_Titulo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 10%;
+        justify-content: space-between;
+}
+
+.Botao_Fechar{
+        width: 5%;
+        height: 70%;
+        border: none;
+        background: none;
+}
+
+.Icone_Fechar{
+        width: 90%;
+        height: 90%;
+        padding-left: 5px;
+}
+
+.Icone_Fechar:hover{
+        width: 100%;
+        height: 100%;
+}
+
+.Conteudo_Formulario{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+}
+
+.Inputs{
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 80%;
+}
+
+.Inputs_Direita{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: 40%;
+}
+
+.Inputs_Esquerda{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: 40%;
+}
+.conjunto_input{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 90%;
+        height: 23%;
+}
+
+
+.Nome_Input{
+        font-weight: bold;
+        text-align: center;
+        font-size: 15px;
+}
+
+.Input{
+        width: 100%;
+        height: 50%;
+        padding-left: 10px;
+        outline: none;
+        background-color: #D9D9D9;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Adiciona sombreamento na parte inferior */
+}
+
+.Campo_Invalido{
+        width: 100%;
+        margin-top: 10px;
+        font-size: 11px;
+        font-weight: bold;
+        color: red;
+        padding-left: 5px;
+}
+
+.Descricao{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40%;
+        justify-content: space-evenly;
+        outline: none; /* Remove a borda de foco */
+}
+
+.Titulo_Descricao{
+        font-size: 20px;
+}
+
+.Input_Descricao{
+        width: 85%;
+        height: 30%;
+        outline: none;
+        border: 1.5px solid black;
+        padding: 10px;
+}
+
+.Botao_Registrar{
+        border: none;
+        background-color: #007BFF;
+        color: #ffffff;
+        font-weight: bold;
+        width: 30%;
+        height: 25%;
+        border-radius: 10px;
+        cursor: pointer;
+}
+
+.Botao_Registrar:hover{
+        color: rgb(21, 255, 0);
+        font-size: 17px;
+}
+
+.Sessao_Grafico_de_Barras{
+        width: 33%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+
+.Titulo_Grafico_de_Barras{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        width: 100%;
+}
+
+.Area_Grafico_de_Barras{
+
+        height: 100%;
+        width: 90%;
+        display: flex;
+        flex-direction: column-reverse;
+}
+
+.Sessao_Grafico_de_Pizza{
+
+        width: 33%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+}
+
+.Area_Grafico_de_Pizza{
+        height: 60%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+}
+
+.Tipos_Categoria{
+    width: 100%;
+    height: 20%;
+
+
+    /* Organização dos elementos filhos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Img_Categoria{
+        width: 10%;
+        height: 50%;
 }

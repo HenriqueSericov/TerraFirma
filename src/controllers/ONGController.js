@@ -47,8 +47,34 @@ function autenticar(req, res) {
 }
 function Buscar_Total_Voluntarios(req, res) {
     var fkONG = req.body.fkONG;
+    if (fkONG == undefined) {
+        res.status(400).send("Seu fkONG está undefined!");
+    }
     ONGModel.Buscar_Total_Voluntarios(fkONG).then(function(resultado){
-        // precisamos informar que o resultado voltará para o front-end como uma resposta em json
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
+function Buscar_Acoes_Com_Mais_Voluntarios(req, res) {
+    var fkONG = req.body.fkONG;
+    if (fkONG == undefined) {
+        res.status(400).send("Seu fkONG está undefined!");
+    }
+    ONGModel.Buscar_Acoes_Com_Mais_Voluntarios(fkONG).then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
+function Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios(req, res) {
+    var fkONG = req.body.fkONG;
+    if (fkONG == undefined) {
+        res.status(400).send("Seu fkONG está undefined!");
+    }
+    ONGModel.Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios(fkONG).then(function(resultado){
         res.status(200).json(resultado);
     }).catch(function(erro){
         res.status(500).json(erro.sqlMessage);
@@ -57,8 +83,10 @@ function Buscar_Total_Voluntarios(req, res) {
 
 function Buscar_Acoes(req, res) {
     var fkONG = req.body.fkONG;
+    if (fkONG == undefined) {
+        res.status(400).send("Seu fkONG está undefined!");
+    }
     ONGModel.Buscar_Acoes(fkONG).then(function(resultado){
-        // precisamos informar que o resultado voltará para o front-end como uma resposta em json
         res.status(200).json(resultado);
     }).catch(function(erro){
         res.status(500).json(erro.sqlMessage);
@@ -167,5 +195,7 @@ module.exports = {
     autenticar,
     cadastrar_Acao,
     Buscar_Total_Voluntarios,
-    Buscar_Acoes
+    Buscar_Acoes,
+    Buscar_Acoes_Com_Mais_Voluntarios,
+    Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios
 }

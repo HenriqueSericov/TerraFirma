@@ -26,6 +26,47 @@ function Buscar_Total_Voluntarios(fkONG) {
     return database.executar(instrucao);
 }
 
+function Buscar_Acoes_Com_Mais_Voluntarios(fkONG) {
+    var instrucao = `
+    SELECT 
+        IdAcao, Nome AS Nome_da_Acao, COUNT(fkVoluntario) AS Numero_Voluntarios
+    FROM 
+        Acao
+    JOIN 
+        Participacao ON IdAcao = fkAcao
+    WHERE fkONG = ${fkONG}
+    GROUP BY 
+        IdAcao, Nome
+    ORDER BY 
+        Numero_Voluntarios DESC
+    LIMIT 
+        7
+    ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios(fkONG) {
+    var instrucao = `
+    SELECT 
+        Categoria.Nome AS Categoria_da_Acao,
+        COUNT(Participacao.fkVoluntario) AS Numero_de_Voluntarios
+    FROM 
+        Categoria
+    LEFT JOIN 
+        Acao ON Categoria.IdCategoria = Acao.fkCategoria AND Acao.fkONG = ${fkONG}
+    LEFT JOIN 
+        Participacao ON Acao.IdAcao = Participacao.fkAcao
+    GROUP BY 
+        Categoria.Nome
+    ORDER BY 
+        Numero_de_Voluntarios DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function Buscar_Acoes(fkONG) {
     var instrucao = `
     SELECT 
@@ -57,4 +98,12 @@ function cadastrar_Acao(NomeAcao, Categoria, Estado, Cidade, Zona, Endereco, Dat
     return database.executar(instrucao);
 }
 
-module.exports = { cadastrar, autenticar, cadastrar_Acao, Buscar_Total_Voluntarios, Buscar_Acoes};
+module.exports = { 
+    cadastrar, 
+    autenticar, 
+    cadastrar_Acao, 
+    Buscar_Total_Voluntarios, 
+    Buscar_Acoes, 
+    Buscar_Acoes_Com_Mais_Voluntarios, 
+    Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios
+};

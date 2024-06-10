@@ -23,6 +23,13 @@ router.post("/Buscar_Acoes", function (req, res) {
     ONGController.Buscar_Acoes(req, res);
 });
 
+router.post("/Buscar_Acoes_Com_Mais_Voluntarios", function (req, res) {
+    ONGController.Buscar_Acoes_Com_Mais_Voluntarios(req, res);
+});
+
+router.post("/Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios", function (req, res) {
+    ONGController.Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios(req, res);
+});
 router.post("/autenticar", function (req, res) {
     ONGController.autenticar(req, res);
 });

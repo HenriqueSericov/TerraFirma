@@ -12,7 +12,8 @@
         <link rel="stylesheet" href="../css/DashBoard.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body >  
+<body onload="Buscar_Total_Participantes(),Buscar_Acoes(),Plotar_Grafico_Barras(),Plotar_Grafico_Rosquinhas(), Opções_de_Estado(), Opções_de_Cidade(), Opções_de_Zona(), Opções_de_Categoria(), Coloca_Informações()">  
+
         <div class="Formulario_Nova_Acao" id="Formulario_Nova_Acao">
                 <div class="Conteudo_Titulo">
                         <button class="Botao_Fechar" onclick="Fechar_Nova_Acao()">
@@ -81,12 +82,29 @@
                         <div class="Descricao">
                                 <h1 class="Titulo_Descricao">Descrição</h1>
                                 <textarea id="Input_Descricao" class="Input_Descricao" placeholder="No maximo 100 caracters"></textarea>
-                                <center><p class="Campo_Invalido" id="Campo_Erro_Descricao" style="font-size: 15px;"></p></center>
+                                <p class="Campo_Invalido" id="Campo_Erro_Descricao"></p>
                                 <button class="Botao_Registrar" onclick="Cadastrar_Nova_Acao()">Registrar</button>
                         </div>
 
                 </div>
-
+        </div>
+        <div class="Menu_Lateral">
+                <div class="Conteudo_Menu_Lateral">
+                        <div class="Sessao_Usuario">
+                                <img src="../assets/imgs/Icone_Usuario.png" alt="" class="Imagem_Foto_de_Perfil">
+                                <p class="Nome_ONG_Titulo" id="Nome_ONG_Usuario">SPTech Unidos</p>
+                        </div>
+                        <div class="Informações_ONG">
+                                <p class="Nome_ONG" id="Nome_ONG">Nome: SPTech Unidos</p>
+                                <p class="Email_ONG" id="Email_ONG">Email: teste@outlook.com</p>
+                                <p class="Telefone_ONG" id="Telefone_ONG">Telefone: 123123123</p>
+                        </div>
+                        <img src="../assets/imgs/Logo - TerraFirma.png" alt="" class="Logo_TerraFirma">
+                        <button class="Botao_Sair" onclick="Sair()">
+                                <img src="../assets/imgs/Icone_Sair.png" alt="" class="Icone_Sair">
+                                <p class="Texto_Sair">Sair</p>
+                        </button>
+                </div>
         </div>
         <header class="menu">
                 <section class="Sessao_Menu">
@@ -97,7 +115,7 @@
                         </a>
                 </section>
                 <section class="Sessao_Titulo">
-                        <h1 class="Titulo_DashBoard">DashBoard ONG [Nome]</h1>
+                        <h1 class="Titulo_DashBoard" id="Titulo_DashBoard"></h1>
                 </section>
         </header>
         <section class="Conteudo_DashBoard">
@@ -124,9 +142,9 @@
                                 <canvas id="Grafico_Barras" class="Grafico_de_Barras"></canvas>
                         </div>
                 </div>
-                <div class="Sessao_Grafico_de_Pizza">
-                        <div class="Area_Grafico_de_Pizza">
-                                <canvas id="Grafico_Pizza" class="Grafico_de_Pizza"></canvas>
+                <div class="Sessao_Grafico_de_Rosquinha">
+                        <div class="Area_Grafico_de_Rosquinha">
+                                <canvas id="Grafico_Rosquinha" class="Grafico_de_Rosquinha"></canvas>
                         </div>
                         <div class="Tipos_Categoria">
                                 <img class="Img_Categoria" src="../assets/imgs/Legenda_Alimento.png" alt="ODS Alimento">
@@ -140,87 +158,96 @@
                                 <img class="Img_Categoria" src="../assets/imgs/Legenda_Saude.png" alt="ODS Saude">
 
                                 <img class="Img_Categoria" src="../assets/imgs/Legenda_Recreação.png" alt="ODS Recreação">
-                                <button onclick="Buscar_Acoes()">TESTE</button>
                         </div>
                 </div>
         </section>
 </body>
 </html>
 <script>
-        setTimeout(() => {
-                Buscar_Total_Participantes(),
-                Buscar_Acoes(),
-                Plotar_Grafico_Barras()
-        });
 
         function Atualiza_Dados() {
                 Buscar_Total_Participantes();
                 Buscar_Acoes();
+                Plotar_Grafico_Barras();
+                Plotar_Grafico_Rosquinhas();
         }
 
-        const intervalo = 20000; 
+        const intervalo = 25000; 
 
-        // Chamando as funções a cada intervalo de tempo
         setInterval(Atualiza_Dados, intervalo);
 
-    const Estados = [
-        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
-        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
-        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
-        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
-        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
-        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
-    ];
+        function Coloca_Informações(){
+                Nome_da_ONG = sessionStorage.NOME_ONG
 
-    const selectEstados = Input_Estado;
+                Titulo_DashBoard.innerHTML = `DashBoard ONG ${Nome_da_ONG}`
+        }
 
-    for (let Posicao = 0; Posicao < Estados.length; Posicao++) {
-        const option = document.createElement('option');
-        option.text = Estados[Posicao];
-        option.value = Posicao+1;
-        selectEstados.appendChild(option);
-    }
+        function Opções_de_Estado(){
+                const Estados = [
+                        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
+                        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
+                        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
+                        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+                        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
+                        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+                ];
 
-    const cidades = [
-        "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
-        "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
-        "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
-    ];
+                const selectEstados = Input_Estado;
 
-    const Categorias = [
-    'Alimento', 'Serviços', 'Educação', 'Animais', 'Saude', 'Recreação'
+                for (let Posicao = 0; Posicao < Estados.length; Posicao++) {
+                        const option = document.createElement('option');
+                        option.text = Estados[Posicao];
+                        option.value = Posicao+1;
+                        selectEstados.appendChild(option);
+                }
+        }
 
-    ];
-    const selectCategorias = Input_Categoria;
+        function Opções_de_Cidade(){
+                const cidades = [
+                        "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza",
+                        "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Porto Alegre",
+                        "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís"
+                ];
 
-    for (let Posicao = 0; Posicao < Categorias.length; Posicao++) {
-        const option = document.createElement('option');
-        option.text = Categorias[Posicao];
-        option.value = Posicao+1;
-        selectCategorias.appendChild(option);
-    }
+                const selectCidades = Input_Cidade;
+
+                for (let Posicao = 0; Posicao < cidades.length; Posicao++) {
+                        const option = document.createElement('option');
+                        option.text = cidades[Posicao];
+                        option.value = Posicao+1;
+                        selectCidades.appendChild(option);
+                }
+}
+
+        function Opções_de_Categoria(){
+                const Categorias = [
+                'Alimento', 'Serviços', 'Educação', 'Animais', 'Saude', 'Recreação'
+
+                ];
+                const selectCategorias = Input_Categoria;
+
+                for (let Posicao = 0; Posicao < Categorias.length; Posicao++) {
+                        const option = document.createElement('option');
+                        option.text = Categorias[Posicao];
+                        option.value = Posicao+1;
+                        selectCategorias.appendChild(option);
+                }
+}
 
 
-    const selectCidades = Input_Cidade;
+        function Opções_de_Zona(){
+        const Zonas = ["Zona Sul", "Zona Norte", "Zona Leste", "Zona Oeste", "Centro"];
 
-    for (let Posicao = 0; Posicao < cidades.length; Posicao++) {
-        const option = document.createElement('option');
-        option.text = cidades[Posicao];
-        option.value = Posicao+1;
-        selectCidades.appendChild(option);
-    }
+        const selectZona = Input_Zona;
 
-    const Zonas = ["Zona Sul", "Zona Norte", "Zona Leste", "Zona Oeste", "Centro"];
+        for (let Posicao = 0; Posicao < Zonas.length; Posicao++) {
+                const option = document.createElement('option');
+                option.text = Zonas[Posicao];
+                option.value = Posicao+1;
+                selectZona.appendChild(option);
+        }
 
-    const selectZona = Input_Zona;
-
-    for (let Posicao = 0; Posicao < Zonas.length; Posicao++) {
-        const option = document.createElement('option');
-        option.text = Zonas[Posicao];
-        option.value = Posicao+1;
-        selectZona.appendChild(option);
-    }
-
+}
 
         function Nova_Acao(){
                 Formulario_Nova_Acao.style.display = "Block";
@@ -502,73 +529,153 @@
                 return false;
         }
 
-        function Plotar_Grafico_Barras(){
-                (async function() {
-                        const data = [
-                        { year: 2010, count: 10 },      
-                        { year: 2011, count: 20 },
-                        { year: 2012, count: 15 },
-                        { year: 2013, count: 25 },
-                        { year: 2014, count: 22 },
-                        { year: 2015, count: 30 },
-                        { year: 2016, count: 60 },
-                        
-                        ];
+        function Plotar_Grafico_Barras() {
+                const Data = [];
 
-                        new Chart(
-                        document.getElementById('Grafico_Barras'),
-                        {
+                fetch("/ONGs/Buscar_Acoes_Com_Mais_Voluntarios", {
+                        method: "POST",
+                        headers: {
+                        "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                        fkONG: ID_ONG
+                        })
+                }).then(function(resposta) {
+                        console.log("ESTOU NO THEN DO BUSCAR ACOES!");
+
+                        if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                                console.log(json);
+                                console.log(JSON.stringify(json));
+
+                                for (let Posicao = 0; Posicao < json.length; Posicao++) {
+                                const Nome_da_Acao = json[Posicao].Nome_da_Acao;
+                                const Numero_Voluntarios = json[Posicao].Numero_Voluntarios;
+
+                                Data.push({
+                                        Nome_da_Acao: Nome_da_Acao,
+                                        Numero_Voluntarios: Numero_Voluntarios
+                                });
+                                }
+
+                                // Criar o gráfico dentro deste bloco
+                                Criar_Grafico_Barras(Data);
+                        });
+
+                        } else {
+                        resposta.text().then(texto => {
+                                console.error(texto);
+                        });
+                        }
+
+                }).catch(function(erro) {
+                        console.log(erro);
+                });
+
+                return false;
+        }
+
+        function Criar_Grafico_Barras(Data) {
+                let existingChart = Chart.getChart('Grafico_Barras');
+                if (existingChart) {
+                        existingChart.destroy();
+                }
+                new Chart(
+                        document.getElementById('Grafico_Barras'), {
                         type: 'bar',
                         data: {
-                                labels: data.map(row => row.year),
-                                datasets: [
-                                {
-                                label: 'Acquisitions by year',
-                                data: data.map(row => row.count)
-                                }
-                                ]
+                                labels: Data.map(row => row.Nome_da_Acao),
+                                datasets: [{
+                                label: 'Ações com mais voluntarios',
+                                data: Data.map(row => row.Numero_Voluntarios)
+                                }]
                         },
                         options: {
                                 responsive: true, // Define o gráfico como responsivo
                                 maintainAspectRatio: false, // Permite que o gráfico se ajuste à altura e largura do contêiner
                                 scales: {
-                                        y: {
+                                y: {
                                         beginAtZero: true
-                                        }
                                 }
                                 }
                         }
-                        );
-                        })();
+                        }
+                );
         }
 
 
-                (async function() {
-                const data = [
-                { year: 2010, count: 10 },
-                { year: 2011, count: 20 },
-                { year: 2012, count: 15 },
-                { year: 2013, count: 25 },
-                { year: 2014, count: 22 },
-                { year: 2015, count: 30 },
-                { year: 2016, count: 60 },
-                { year: 2016, count: 60 }
-                ];
+        function Plotar_Grafico_Rosquinhas() {
+                const Data = [];
+
+                fetch("/ONGs/Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios", {
+                        method: "POST",
+                        headers: {
+                        "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                        fkONG: ID_ONG
+                        })
+                }).then(function(resposta) {
+                        console.log("ESTOU NO THEN DO BUSCAR ACOES!");
+
+                        if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                                console.log(json);
+                                console.log(JSON.stringify(json));
+
+                                for (let Posicao = 0; Posicao < json.length; Posicao++) {
+                                const Categoria_da_Acao = json[Posicao].Categoria_da_Acao;
+                                const Numero_de_Voluntarios = json[Posicao].Numero_de_Voluntarios;
+
+                                Data.push({
+                                        Categoria_da_Acao: Categoria_da_Acao,
+                                        Numero_de_Voluntarios: Numero_de_Voluntarios
+                                });
+                                }
+
+                                // Criar o gráfico dentro deste bloco
+                                Criar_Grafico_Rosquinha(Data);
+                        });
+
+                        } else {
+                        resposta.text().then(texto => {
+                                console.error(texto);
+                        });
+                        }
+
+                }).catch(function(erro) {
+                        console.log(erro);
+                });
+
+                return false;
+        }
+
+        function Criar_Grafico_Rosquinha(Data) {
+                let existingChart = Chart.getChart('Grafico_Rosquinha');
+                if (existingChart) {
+                        existingChart.destroy();
+                }
 
                 new Chart(
-                document.getElementById('Grafico_Pizza'),
-                {
-                type: 'doughnut',
-                data: {
-                        labels: data.map(row => row.year),
-                        datasets: [
-                        {
-                        label: 'Acquisitions by year',
-                        data: data.map(row => row.count)
+                        document.getElementById('Grafico_Rosquinha'), {
+                        type: 'doughnut',
+                        data: {
+                                labels: Data.map(row => row.Categoria_da_Acao),
+                                datasets: [{
+                                label: 'Numero de Voluntarios',
+                                data: Data.map(row => row.Numero_de_Voluntarios)
+                                }]
+                        },
+                        options: {
+                                responsive: true,
+                                maintainAspectRatio: false
                         }
-                        ]
-                }
-                }
+                        }
                 );
-                })();
+}
+
 </script>

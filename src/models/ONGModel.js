@@ -80,6 +80,44 @@ function Buscar_Acoes(fkONG) {
     return database.executar(instrucao);
 }
 
+function Buscar_Todas_Acoes_Por_Categoria(Categoria) {
+    var instrucao = `
+    SELECT 
+        IdAcao, Acao.Nome AS Nome_Acao, Descricao, DataAcao, Endereco, URLImagem,Endereco,
+        ONG.Nome AS Nome_ONG,
+        Categoria.Nome AS Nome_Categoria,
+        Estado.Nome AS Estado, Cidade.Nome AS Cidade, Zona.Nome AS Zona
+    FROM 
+        Acao
+    JOIN 
+        Estado
+    ON 
+        IdEstado = fkEstado
+    JOIN 
+        Cidade
+    ON 
+        IdCidade = fkCidade
+    JOIN 
+        Zona
+    ON 
+        IdZona = fkZona 
+    JOIN
+        ONG
+    ON
+        IdONG = fkONG
+    JOIN
+        Categoria
+    ON
+        IdCategoria = fkCategoria
+    WHERE
+        Categoria.Nome = ${Categoria}
+    ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 function cadastrar(NomeONG, CNPJ, CEP, Senha, Telefone, Email, TipoONG) {
     var instrucao = `
         INSERT INTO ONG (Nome, Email, Telefone, CNPJ, Senha, CEP, fkTipoONG) VALUES ('${NomeONG}', '${Email}', '${Telefone}', '${CNPJ}', '${Senha}', '${CEP}', '${TipoONG}');
@@ -105,5 +143,6 @@ module.exports = {
     Buscar_Total_Voluntarios, 
     Buscar_Acoes, 
     Buscar_Acoes_Com_Mais_Voluntarios, 
-    Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios
+    Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios,
+    Buscar_Todas_Acoes_Por_Categoria
 };

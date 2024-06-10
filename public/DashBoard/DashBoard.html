@@ -88,28 +88,37 @@
 
                 </div>
         </div>
-        <div class="Menu_Lateral">
+
+        <div class="Menu_Lateral" id="Menu_Lateral">
                 <div class="Conteudo_Menu_Lateral">
-                        <div class="Sessao_Usuario">
+                    <div class="Sessao_Usuario">
+                        <div class="Header_Menu_Lateral">   
+                                <div class="Div_Auxiliar"></div>
                                 <img src="../assets/imgs/Icone_Usuario.png" alt="" class="Imagem_Foto_de_Perfil">
-                                <p class="Nome_ONG_Titulo" id="Nome_ONG_Usuario">SPTech Unidos</p>
+                                <button class="Botao_Menu_Lateral" onclick="Fechar_Menu_Lateral()"><img src="../assets/imgs/Menu.png" alt="" class="Icone_Menu"></button>
                         </div>
-                        <div class="Informações_ONG">
-                                <p class="Nome_ONG" id="Nome_ONG">Nome: SPTech Unidos</p>
-                                <p class="Email_ONG" id="Email_ONG">Email: teste@outlook.com</p>
-                                <p class="Telefone_ONG" id="Telefone_ONG">Telefone: 123123123</p>
-                        </div>
+                        <p class="Nome_ONG_Titulo" id="Nome_ONG_Usuario">SPTech Unidos</p>
+                    </div>
+                    <div class="Informações_ONG">
+                        <p class="Nome_ONG" id="Nome_ONG">Nome: </p>
+                        <p class="Email_ONG" id="Email_ONG">Email: </p>
+                        <p class="Telefone_ONG" id="Telefone_ONG">Telefone: </p>
+                    </div>
+                    <div class="Sessao_TerraFirma">
                         <img src="../assets/imgs/Logo - TerraFirma.png" alt="" class="Logo_TerraFirma">
-                        <button class="Botao_Sair" onclick="Sair()">
-                                <img src="../assets/imgs/Icone_Sair.png" alt="" class="Icone_Sair">
-                                <p class="Texto_Sair">Sair</p>
-                        </button>
+                        <p class="Texto_TerraFirma">TerraFirma</p>
+                    </div>
+                    <button class="Botao_Sair" onclick="Sair()">
+                        <img src="../assets/imgs/Icone_Sair.png" alt="" class="Icone_Sair">
+                        <p class="Texto_Sair">Sair</p>
+                    </button>
                 </div>
-        </div>
+            </div>
+            
         <header class="menu">
                 <section class="Sessao_Menu">
                         <a href="">
-                                <button class="Botao_Menu">
+                                <button class="Botao_Menu" onclick="Abrir_Menu_Lateral( )">
                                         <img src="../assets/imgs/Menu.png" alt="" class="Icone_Menu">
                                 </button>
                         </a>
@@ -176,10 +185,16 @@
 
         setInterval(Atualiza_Dados, intervalo);
 
+
         function Coloca_Informações(){
                 Nome_da_ONG = sessionStorage.NOME_ONG
+                Email_da_ONG = sessionStorage.EMAIL_ONG
+                Telefone_da_ONG = sessionStorage.TELEFONE_ONG
 
                 Titulo_DashBoard.innerHTML = `DashBoard ONG ${Nome_da_ONG}`
+                Nome_ONG.innerHTML += `<br> ${Nome_da_ONG}`
+                Email_ONG.innerHTML += `<br> ${Email_da_ONG}`
+                Telefone_ONG.innerHTML += `<br> ${Telefone_da_ONG}`
         }
 
         function Opções_de_Estado(){
@@ -257,6 +272,20 @@
                 Formulario_Nova_Acao.style.display = "None";
         }
 
+        function Abrir_Menu_Lateral(){
+                event.preventDefault();
+                Menu_Lateral.style.display = "Block";
+        }
+
+        function Fechar_Menu_Lateral(){
+                Menu_Lateral.style.display = "None";
+        }
+
+        function Sair(){
+                sessionStorage.clear();
+                window.location = "../Login_ONG.html";
+        }
+        
         function CampoVazio(Campo){
                 return !Campo
         }

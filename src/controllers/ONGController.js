@@ -93,6 +93,18 @@ function Buscar_Acoes(req, res) {
     })
 }
 
+function Buscar_Todas_Acoes_Por_Categoria(req,res) {
+    var Categoria_Buscada = req.body.Categoria;
+    if (Categoria_Buscada == undefined) {
+        res.status(400).send("Seu Categoria_Buscada está undefined!");
+    }
+    ONGModel.Buscar_Todas_Acoes_Por_Categoria(Categoria_Buscada).then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 function cadastrar(req, res) {
     var NomeONG = req.body.NomeONG;
     var CNPJ = req.body.CNPJ;
@@ -197,5 +209,6 @@ module.exports = {
     Buscar_Total_Voluntarios,
     Buscar_Acoes,
     Buscar_Acoes_Com_Mais_Voluntarios,
-    Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios
+    Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios,
+    Buscar_Todas_Acoes_Por_Categoria
 }

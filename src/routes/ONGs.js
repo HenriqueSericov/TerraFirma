@@ -35,6 +35,10 @@ router.post("/Buscar_Todas_Acoes_Por_Categoria", function (req ,res) {
     ONGController.Buscar_Todas_Acoes_Por_Categoria(req, res);
 });
 
+router.post("/Buscar_Inscricoes", function (req ,res) {
+    ONGController.Buscar_Inscricoes(req, res);
+});
+
 router.post("/autenticar", function (req, res) {
     ONGController.autenticar(req, res);
 });

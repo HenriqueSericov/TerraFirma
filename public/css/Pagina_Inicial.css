@@ -119,20 +119,20 @@ html{
 
 }
 
-.sessao-Barra_de_pesquisa{
-    /*Tamanho */
+/* .sessao-Barra_de_pesquisa{
+    Tamanho 
     width: 30%;
     height: 55%;
     padding-left: 10px;
     padding-right: 7px;
 
-    /* Cor */
+    Cor 
     background-color: #4DA3FF;
 
-    /* borda */
+    borda
     border-radius: 10px;
 
-    /* Organização de elementos filhos */
+    Organização de elementos filhos
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -140,13 +140,13 @@ html{
 }
 
 .Barra_de_pesquisa{
-    /* Borda */
+    Borda
     border: none;
     outline: none;
 
-    /* Cor */
+    Cor
     background-color: #4DA3FF;
-}   
+}    */
 
 input::placeholder {
     /* Cor */

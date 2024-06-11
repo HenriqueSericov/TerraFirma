@@ -15,31 +15,40 @@
 
     <link rel="stylesheet" href="css/Tela_Voluntario.css">
 </head>
-<body>
-    <div class="Modal_Acao" id="Modal_Acao">
-        <div class="Conteudo_Modal">
-            <div class="Cabecalo_Modal">
-                <div class="Div_Auxilar_Modal"></div>
-                <h1 class="Nome_Acao_Modal">Nome Acao</h1>
-                <button class="Botao_Fechar" onclick="Fechar_Modal()">
-                    <span class="Icone_Fechar">&times;</span>
-                </button>
+<body onload="Inserir_Informacoes()">
+    <div class="Menu_Lateral_Usuario" id="Menu_Lateral_Usuario">
+        <div class="Sessao_Usuario">
+            <div class="Header_Menu_Lateral">   
+                    <div class="Div_Auxiliar"></div>
+                    <img src="assets/imgs/Icone_Usuario.png" alt="" class="Imagem_Foto_de_Perfil">
+                    <button class="Botao_Menu_Lateral" onclick="Fechar_Menu_Lateral()"><img src="assets/imgs/Icone_Fechar.png" alt="" class="Icone_Fechar"></button>
             </div>
-            <div class="Detalhes_Acao">
-                <div class="Descricao_Acao_Modal">
-                    <h4 class="Titulo_Descricao_Modal">Sobre a ação</h4>
-                    <p class="Texto_Descricao_Modal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non quam vel libero feugiat ullamcorper. Vivamus sit amet justo nec turpis consequat ultricies.</p>
-                </div>
-                <div class="Informacoes_Acoes">
-                    <p class="Info_Acao">Local: <span class="Local_Acao_Modal">São Paulo</span>📍</p>
-                    <p class="Info_Acao">Data: <span class="Data_Acao_Modal">xx/xx/xxxx</span></p>
-                    <p class="Info_Acao">ONG: Teste</p>
-                </div>
-                <img src="data:image/jpeg;base64,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" alt="" class="Imagem_Acao_Modal">
-            </div>
-            <button class="Botao_Inscreva-se">Increver-se</button>
+            <p class="Nome_voluntario_Titulo" id="Nome_voluntario_Principal">SPTech Unidos</p>
+        </div>
+        <div class="Informações_Voluntarios">
+            <p class="Nome_Voluntarios" id="Nome_Voluntario">Nome: </p>
+            <p class="Email_Voluntarios" id="Email_Voluntario">Email: </p>
+        </div>
+        <div class="Sessao_TerraFirma">
+            <img src="assets/imgs/Logo - TerraFirma.png" alt="" class="Logo_TerraFirma">
+            <p class="Texto_TerraFirma">TerraFirma</p>
+        </div>
+        <button class="Botao_Sair" onclick="Sair()">
+            <img src="assets/imgs/Icone_Sair.png" alt="" class="Icone_Sair">
+            <p class="Texto_Sair">Sair</p>
+        </button>
+    </div>
+
+    <div class="Campo_Aviso" id="Campo_Aviso">
+        <div class="Conteudo_Aviso">
+            <h1 class="Aviso" id="Aviso"></h1>
         </div>
     </div>
+
+    <section class="Container_Modais" id="Container_Modais">
+
+    </section>
+
     <header class="menu">
         <section>
 
@@ -52,14 +61,14 @@
         </section>
 
         <a href="" class="Area_Botao_Usuario">
-            <button  class="Botao_Usuario">
+            <button  class="Botao_Usuario" onclick="Abrir_Menu_Lateral()">
                 <img src="assets/imgs/Icone_Usuario.png" alt="Icone_Usuario" class="Icone_Usuario">
             </button>
         </a>            
     </header>
 
     <section class="Sessao_Inicial">
-        <h1 class="Titulo_Pagina_Voluntario">Bem vindo [NOME]!</h1>
+        <h1 class="Titulo_Pagina_Voluntario" id="Titulo_Pagina_Voluntario"></h1>
         <section class="Sessao_Categorias_de_vagas">
             <div class="Categorias">
                 <h1 class="Titulo_Categorias" id="Sessao_Categorias_de_vagas">Categorias de vagas</h1>
@@ -83,7 +92,7 @@
                         <img class="Img_Categoria" src="assets/imgs/Legenda_Recreação.png" alt="ODS Recreação">
                     </button>
                 </div>
-                <button class="Botao_Suas_Inscricoes" onclick="">Suas Inscrições</button>
+                <button class="Botao_Suas_Inscricoes" onclick="Buscar_Inscricoes()">Suas Inscrições</button>
             </div>
         </section>
     </section>
@@ -101,27 +110,54 @@
                 <img src="assets/imgs/Logo - TerraFirma.png" alt="Logo" class="logo-menu">
 
             <div class="Botoes_Footer">
-                    <button class="Botao_Footer">Alimento</button>
+                    <button class="Botao_Footer" onclick="Buscar_Categoria_Alimeto()">Alimento</button>
 
-                    <button class="Botao_Footer">Serviços</button>
+                    <button class="Botao_Footer" onclick="Buscar_Categoria_Servicos()">Serviços</button>
 
-                    <button class="Botao_Footer">Educação</button>
+                    <button class="Botao_Footer" onclick="Buscar_Categoria_Educacao()">Educação</button>
 
-                    <button class="Botao_Footer">Animais</button>
+                    <button class="Botao_Footer" onclick="Buscar_Categoria_Animais()">Animais</button>
 
-                    <button class="Botao_Footer">Saúde</button>
+                    <button class="Botao_Footer" onclick="Buscar_Categoria_Saude()">Saúde</button>
             </div>
         </div>
     </Footer>
 </body>
 </html>
 <script>
-    function Fechar_Modal(){
-        Modal_Acao.style.display = "None"
+    function Sair(){
+            sessionStorage.clear();
+            window.location = "Login_Voluntario.html";
     }
 
-    function Abrir_Modal(){
-        Modal_Acao.style.display = "flex"
+    function Abrir_Menu_Lateral(){
+        Menu_Lateral_Usuario.style.display = "block"
+        event.preventDefault();
+    }
+
+    function Fechar_Menu_Lateral(){
+        Menu_Lateral_Usuario.style.display = "none"
+    }
+    
+    function Inserir_Informacoes(){
+        let Nome_Usuario = sessionStorage.NOME_USUARIO
+        let Email_Usuario = sessionStorage.EMAIL_USUARIO
+
+        Titulo_Pagina_Voluntario.innerHTML = `Bem vindo ${Nome_Usuario}!`
+        Nome_Voluntario.innerHTML += `<br> ${Nome_Usuario}`
+        Nome_voluntario_Principal.innerHTML = ` ${Nome_Usuario}`
+        Email_Voluntario.innerHTML += `<br> ${Email_Usuario}`
+
+    }
+
+    function Fechar_Modal(IdModal){
+        IdModal.style.display = "None"
+
+    }
+
+    function Abrir_Modal(IdModal){
+
+        IdModal.style.display = "flex"
     }
 
     function Buscar_Categoria_Alimeto(){
@@ -166,6 +202,113 @@
         Buscar_Todas_Ações_Por_Categoria(Categoria)
     }
 
+    function Buscar_Inscricoes(){
+        const fkVoluntario = sessionStorage.ID_USUARIO
+
+        Titulo_Vagas.innerHTML = "Suas inscrições"
+
+        fetch("ONGs/Buscar_Inscricoes", {
+                method: "POST",
+                headers: {
+                        "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fk_Voluntario: fkVoluntario
+                })
+                }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO Buscar_Inscricoes")
+
+                if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        Vagas.innerHTML = ""
+                        Container_Modais.innerHTML = ""
+                        let Id_Modal = 0
+
+                        for(let Posicao = 0; Posicao < json.length; Posicao++){
+                                Id_Modal++
+                                let Modal = `Modal${Id_Modal}`
+
+                                const IdUsuario = sessionStorage.ID_USUARIO
+                                const IdAcao = json[Posicao].IdAcao;
+                                const Nome_da_Acao = json[Posicao].Nome_Acao;
+                                const Data_da_Acao = json[Posicao].DataAcao;
+                                const Data_Formatada = Data_da_Acao.split("T")[0];
+                                const Descricao_Acao = json[Posicao].Descricao;
+                                const Imagem_Acao = json[Posicao].URLImagem
+                                const Nome_ONG = json[Posicao].Nome_ONG;
+                                const Endereco = json[Posicao].Endereco;
+                                const Nome_Estado = json[Posicao].Estado;
+                                const Nome_Cidade = json[Posicao].Cidade;
+                                const Nome_Zona = json[Posicao].Zona;
+
+                                Vagas.innerHTML += `
+                                <div class="Card" onclick="Abrir_Modal(${Modal})">
+                                    <img class="Imagem_card" src="${Imagem_Acao}" alt="">
+                                    <div class="Conteudo_Card">
+                                        <h1 class="titulo_card">${Nome_da_Acao}</h1>
+                                        <div class="Detalhes_Card">
+                                            <section class="Localizacao-card">
+                                                <span>📍</span>
+                                                <p class="Cidade_Zona_Card_Acao">${Nome_Cidade}, ${Nome_Zona}</p>
+                                            </section>
+                                            <p class="Data_Acao">${Data_Formatada}</p>
+                                        </div>
+                                        <p class="Descricao_Acao">${Descricao_Acao}</p>
+                                        <p class="Nome_ONG">ONG: ${Nome_ONG}</p>
+                                    </div>
+                                </div>
+                                                `
+
+                                Container_Modais.innerHTML += `
+                                <div class="Modal_Acao" id="${Modal}">
+                                    <div class="Conteudo_Modal">
+                                        <div class="Cabecalo_Modal">
+                                            <div class="Div_Auxilar_Modal"></div>
+                                            <h1 class="Nome_Acao_Modal">${Nome_da_Acao}</h1>
+                                            <button class="Botao_Fechar" onclick="Fechar_Modal(${Modal})">
+                                                <span class="Icone_Fechar_Modal">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="Detalhes_Acao">
+                                            <div class="Descricao_Acao_Modal">
+                                                <h4 class="Titulo_Descricao_Modal">Sobre a ação</h4>
+                                                <p class="Texto_Descricao_Modal">${Descricao_Acao}</p>
+                                            </div>
+                                            <div class="Informacoes_Acoes">
+                                                <p class="Info_Acao"><span class="Titulo_Info">Local:</span><br> <span class="Local_Acao_Modal">${Nome_Cidade}, ${Nome_Zona}</span>📍</p>
+                                                <p class="Info_Acao"><span class="Titulo_Info">Endereço:</span><br> ${Endereco}</p>
+                                                <p class="Info_Acao"><span class="Titulo_Info">Data:</span><br>  <span class="Data_Acao_Modal">${Data_Formatada}</span></p>
+                                                <p class="Info_Acao"><span class="Titulo_Info">ONG:</span><br> ${Nome_ONG}</p>
+                                            </div>
+                                            <div class="Caixa_Imagem">
+                                                <img src="${Imagem_Acao}" alt="" class="Imagem_Acao_Modal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                `
+                        }
+
+                        });
+
+                } else {
+                        resposta.text().then(texto => {
+                        console.error(texto);;
+                        });
+                }
+
+                }).catch(function (erro) {
+                console.log(erro);
+                })
+
+                return false;
+    }
+
     function Buscar_Todas_Ações_Por_Categoria(Categoria_Acao){
 
         fetch("ONGs/Buscar_Todas_Acoes_Por_Categoria", {
@@ -187,14 +330,20 @@
                         console.log(JSON.stringify(json));
 
                         Vagas.innerHTML = ""
+                        Container_Modais.innerHTML = ""
+                        let Id_Modal = 0
 
                         for(let Posicao = 0; Posicao < json.length; Posicao++){
+                                Id_Modal++
+                                let Modal = `Modal${Id_Modal}`
+
+                                const IdUsuario = sessionStorage.ID_USUARIO
                                 const IdAcao = json[Posicao].IdAcao;
                                 const Nome_da_Acao = json[Posicao].Nome_Acao;
                                 const Data_da_Acao = json[Posicao].DataAcao;
                                 const Data_Formatada = Data_da_Acao.split("T")[0];
                                 const Descricao_Acao = json[Posicao].Descricao;
-                                const Imagem = json[Posicao].URLImagem
+                                const Imagem_Acao = json[Posicao].URLImagem
                                 const Nome_ONG = json[Posicao].Nome_ONG;
                                 const Endereco = json[Posicao].Endereco;
                                 const Nome_Estado = json[Posicao].Estado;
@@ -202,8 +351,8 @@
                                 const Nome_Zona = json[Posicao].Zona;
 
                                 Vagas.innerHTML += `
-                                <div class="Card" onclick="Abrir_Modal()">
-                                    <img class="Imagem_card" src="${Imagem}" alt="">
+                                <div class="Card" onclick="Abrir_Modal(${Modal})">
+                                    <img class="Imagem_card" src="${Imagem_Acao}" alt="">
                                     <div class="Conteudo_Card">
                                         <h1 class="titulo_card">${Nome_da_Acao}</h1>
                                         <div class="Detalhes_Card">
@@ -218,6 +367,36 @@
                                     </div>
                                 </div>
                                                 `
+
+                                Container_Modais.innerHTML += `
+                                <div class="Modal_Acao" id="${Modal}">
+                                    <div class="Conteudo_Modal">
+                                        <div class="Cabecalo_Modal">
+                                            <div class="Div_Auxilar_Modal"></div>
+                                            <h1 class="Nome_Acao_Modal">${Nome_da_Acao}</h1>
+                                            <button class="Botao_Fechar" onclick="Fechar_Modal(${Modal})">
+                                                <span class="Icone_Fechar_Modal">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="Detalhes_Acao">
+                                            <div class="Descricao_Acao_Modal">
+                                                <h4 class="Titulo_Descricao_Modal">Sobre a ação</h4>
+                                                <p class="Texto_Descricao_Modal">${Descricao_Acao}</p>
+                                            </div>
+                                            <div class="Informacoes_Acoes">
+                                                <p class="Info_Acao"><span class="Titulo_Info">Local:</span><br> <span class="Local_Acao_Modal">${Nome_Cidade}, ${Nome_Zona}</span>📍</p>
+                                                <p class="Info_Acao"><span class="Titulo_Info">Endereço:</span><br> ${Endereco}</p>
+                                                <p class="Info_Acao"><span class="Titulo_Info">Data:</span><br>  <span class="Data_Acao_Modal">${Data_Formatada}</span></p>
+                                                <p class="Info_Acao"><span class="Titulo_Info">ONG:</span><br> ${Nome_ONG}</p>
+                                            </div>
+                                            <div class="Caixa_Imagem">
+                                                <img src="${Imagem_Acao}" alt="" class="Imagem_Acao_Modal">
+                                            </div>
+                                        </div>
+                                        <button class="Botao_Inscreva-se" onclick="Participar_Acao(${IdAcao}, ${IdUsuario}, ${Modal})">Increver-se</button>
+                                    </div>
+                                </div>
+                                `
                         }
 
                         });
@@ -231,6 +410,49 @@
                 }).catch(function (erro) {
                 console.log(erro);
                 })
+
+                return false;
+    }
+
+    function Participar_Acao(fkAcao, IdUsuario, IdModal) {
+        event.preventDefault();
+        fetch("Voluntarios/Cadastrar_Participacao", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                    body: JSON.stringify({
+                        fk_Acao: fkAcao,
+                        Id_Usuario: IdUsuario
+                    }),
+                })
+                    .then(function (resposta) {
+                            console.log("resposta: ", resposta);
+
+                            if (resposta.ok) {
+
+                                IdModal.style.display = "none"
+                                Campo_Aviso.style.display = "flex"
+                                Aviso.innerHTML = "Inscrição Realizado com sucesso!"
+                                setTimeout(() => {
+                                    Campo_Aviso.style.display = "none"
+                                }, 2500);
+
+                            } else {
+                                console.log("Erro ao Realizar Cadastro")
+
+                                IdModal.style.display = "none"
+                                Campo_Aviso.style.display = "flex"
+                                Aviso.style.color = "red"
+                                Aviso.innerHTML = "Voce já está Inscrito nessa Ação!"
+                                setTimeout(() => {
+                                    Campo_Aviso.style.display = "none"
+                                }, 2500);
+                            }
+                        })
+                        .catch(function (resposta) {
+                            console.log(`#ERRO: ${resposta}`);
+                        });
 
                 return false;
     }

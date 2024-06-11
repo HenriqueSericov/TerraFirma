@@ -234,6 +234,7 @@ body{
 .Imagem_card{
     /*Tamanho*/  
     width: 100%;
+    height: 42%;
     border-radius: 20px 20px 0 0;
 }
 
@@ -257,7 +258,6 @@ body{
 .Data_Acao{
     /*Texto*/
     font-size: 12px;
-    border: 2px solid red;
     width: 40%;
     color: #FD7E14;
     font-weight: bold;
@@ -266,7 +266,6 @@ body{
 .Descricao_Acao{
     /*Texto*/
     font-size: 15px;
-
     /* Tamanho */   
     width: 95%;
     height: 110px;
@@ -274,6 +273,7 @@ body{
     /*Detalhes*/   
     padding-left: 5px;
     padding-right: 5px;
+    word-wrap: break-word;
 }
 
 .Nome_ONG{
@@ -330,7 +330,6 @@ body{
 }
 
 .Modal_Acao {
-    border: 2px solid rgb(0, 255, 0);
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -362,11 +361,12 @@ body{
 }
 
 .Div_Auxilar_Modal{
-    width: 33%;
+    width: 30%;
 }
 
 .Nome_Acao_Modal{
     width: 49%;
+    font-size: 30px;
 }
 
 .Botao_Fechar{
@@ -379,6 +379,10 @@ body{
 .Botao_Fechar:hover{
     color: red;
     transition: 0.4s;
+}
+
+.Icone_Fechar_Modal{
+    margin-right: 95%;
 }
 
 .Detalhes_Acao{
@@ -399,6 +403,7 @@ body{
     align-items: center;
     gap: 10px;
     background-color: #EFEFEF;
+    word-wrap: break-word;
 }
 
 .Titulo_Descricao_Modal{
@@ -419,7 +424,13 @@ body{
     width: 20%;
 }
 
+.Titulo_Info{
+    font-size: 15px;
+    font-weight: bold;
+}
+
 .Info_Acao{
+    width: 120%;
     font-size: 16px;
     font-weight: 400;
 }
@@ -434,9 +445,15 @@ body{
     font-weight: 900;
 }
 
-.Imagem_Acao_Modal{
+.Caixa_Imagem{
     width: 25% ;
     height: 85%;
+    border-radius: 10px;
+}
+
+.Imagem_Acao_Modal{
+    width: 100% ;
+    height: 100%;
     border-radius: 10px;
 }
 
@@ -453,5 +470,181 @@ body{
 .Botao_Inscreva-se:hover{
     color: rgb(0, 255, 0);
     transition: 0.5s;
+    cursor: pointer;
+}
+
+.Campo_Aviso{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    display: none; /* Use Flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.Conteudo_Aviso{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    height: 50%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.Aviso{
+    color: #00ff2a;
+    font-weight: bold;
+}
+
+.Menu_Lateral_Usuario{
+    position: absolute;
+    display: none;
+    border: 2px solid rgb(0, 0, 0);
+    margin-top: 5.5%;
+    margin-left: 78%;
+    width: 20%;
+    height: 50%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.Sessao_Usuario{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 20%;
+    width: 100%;
+}
+
+.Header_Menu_Lateral{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Botao_Menu_Lateral{
+    width: 10%;
+    height: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.Div_Auxiliar{
+    height: 100%;
+    width: 35%;
+}
+
+.Imagem_Foto_de_Perfil{
+    width: 30%;
+    height: 80%;
+}
+
+.Nome_voluntario_Titulo{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.Botao_Menu_Lateral{
+    width: 10%;
+    height: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.Botao_Menu_Lateral:hover{
+    width: 10.5%;
+    height: 50%;
+}
+
+.Icone_Fechar{
+    margin-left: 200%;
+    width: 90%;
+    height: 90%;
+    padding-left: 5px;
+}
+
+.Informações_Voluntarios{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+}
+
+.Nome_Voluntarios{
+    font-size: 15px;
+    font-weight: bold;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+.Email_Voluntarios{
+    font-size: 15px;
+    font-weight: bold;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+.Sessao_TerraFirma{  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+}
+
+.Logo_TerraFirma{
+    height: 70%;
+    width: 20%;
+}
+
+.Texto_TerraFirma{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.Botao_Sair{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    border: none;
+    background: none;
+    gap: 3%;
+}
+
+.Icone_Sair{
+    height: 60%;
+    width: 10%;
+}
+
+.Texto_Sair{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Texto_Sair:hover{
+    font-size: 22px;
+    color: red;
+    font-weight: bold;
     cursor: pointer;
 }

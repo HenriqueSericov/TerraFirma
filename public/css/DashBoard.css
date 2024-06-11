@@ -413,7 +413,6 @@ body{
 }
 
 .Nome_ONG{
-
         font-size: 15px;
         font-weight: bold;
         height: 10%;
@@ -422,7 +421,6 @@ body{
 }
 
 .Email_ONG{
-
         font-size: 15px;
         font-weight: bold;
         height: 10%;
@@ -437,6 +435,7 @@ body{
         height: 10%;
         width: 70%;
 }
+
 .Sessao_TerraFirma{
         display: flex;
         flex-direction: column;

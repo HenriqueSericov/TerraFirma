@@ -97,8 +97,38 @@ function cadastrar(req, res) {
     }
     }
 
+    function Cadastrar_Participacao(req, res) {
+        var IdUsuario = req.body.Id_Usuario;
+        var fkAcao = req.body.fk_Acao;
+    
+        if (IdUsuario == undefined) {
+            res.status(400).send("Seu idUsuario está undefined!");
+        }else if(fkAcao == undefined){
+            res.status(400).send("Seu fkAcao está undefined!");        
+        }
+        else {
+    
+            VoluntarioModel.Cadastrar_Participacao(IdUsuario, fkAcao)
+                .then(
+                    function (resultado) {
+                        res.json(resultado);
+                    }
+                ).catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log(
+                            "\nHouve um erro ao realizar o cadastro de Participacão! Erro: ",
+                            erro.sqlMessage
+                        );
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
+        }
+        }
+
 module.exports = {
     listar,
     cadastrar,
-    autenticar
+    autenticar,
+    Cadastrar_Participacao
 }

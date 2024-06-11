@@ -105,6 +105,18 @@ function Buscar_Todas_Acoes_Por_Categoria(req,res) {
     })
 }
 
+function Buscar_Inscricoes(req,res) {
+    var fkVoluntario = req.body.fk_Voluntario;
+    if (fkVoluntario == undefined) {
+        res.status(400).send("Seu fkVoluntario está undefined!");
+    }
+    ONGModel.Buscar_Inscricoes(fkVoluntario).then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 function cadastrar(req, res) {
     var NomeONG = req.body.NomeONG;
     var CNPJ = req.body.CNPJ;
@@ -210,5 +222,6 @@ module.exports = {
     Buscar_Acoes,
     Buscar_Acoes_Com_Mais_Voluntarios,
     Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios,
-    Buscar_Todas_Acoes_Por_Categoria
+    Buscar_Todas_Acoes_Por_Categoria,
+    Buscar_Inscricoes
 }

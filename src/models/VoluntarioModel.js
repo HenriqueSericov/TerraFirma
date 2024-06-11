@@ -28,8 +28,19 @@ function cadastrar(Nome, Email, Telefone, Senha, fkEstado, fkCidade, fkZona) {
     return database.executar(instrucaoSql);
 }
 
+function Cadastrar_Participacao(IdUsuario, fkAcao) {;
+    
+    var instrucaoSql = `
+        INSERT INTO Participacao (Status, fkVoluntario, fkAcao) VALUES ('Ativo', '${IdUsuario}', '${fkAcao}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     listar,
     cadastrar,
-    autenticar
+    autenticar,
+    Cadastrar_Participacao
 };

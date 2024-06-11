@@ -80,6 +80,53 @@ function Buscar_Acoes(fkONG) {
     return database.executar(instrucao);
 }
 
+function Buscar_Inscricoes(fkVoluntario) { 
+    var instrucao = `
+    SELECT 
+        Acao.IdAcao, 
+        Acao.Nome AS Nome_Acao, 
+        Acao.Descricao, 
+        Acao.DataAcao, 
+        Acao.Endereco, 
+        Acao.URLImagem,
+        ONG.Nome AS Nome_ONG,
+        Categoria.Nome AS Nome_Categoria,
+        Estado.Nome AS Estado, 
+        Cidade.Nome AS Cidade, 
+        Zona.Nome AS Zona
+    FROM 
+        Participacao
+    JOIN 
+        Acao
+    ON 
+        Acao.IdAcao = Participacao.fkAcao
+    JOIN 
+        Estado
+    ON 
+        Estado.IdEstado = Acao.fkEstado
+    JOIN 
+        Cidade
+    ON 
+        Cidade.IdCidade = Acao.fkCidade
+    JOIN 
+        Zona
+    ON 
+        Zona.IdZona = Acao.fkZona 
+    JOIN
+        ONG
+    ON
+        ONG.IdONG = Acao.fkONG
+    JOIN
+        Categoria
+    ON
+        Categoria.IdCategoria = Acao.fkCategoria
+    WHERE
+        Participacao.fkVoluntario = '${fkVoluntario}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function Buscar_Todas_Acoes_Por_Categoria(Categoria) {
     var instrucao = `
     SELECT 
@@ -144,5 +191,6 @@ module.exports = {
     Buscar_Acoes, 
     Buscar_Acoes_Com_Mais_Voluntarios, 
     Buscar_Categorias_de_Acoes_Com_Mais_Voluntarios,
-    Buscar_Todas_Acoes_Por_Categoria
+    Buscar_Todas_Acoes_Por_Categoria,
+    Buscar_Inscricoes
 };

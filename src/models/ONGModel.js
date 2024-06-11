@@ -18,7 +18,7 @@ function Buscar_Total_Voluntarios(fkONG) {
     JOIN
         Acao
     ON
-        fkONG = IdAcao
+        fkAcao = IdAcao
     WHERE
         fkONG = '${fkONG}';
     `;
